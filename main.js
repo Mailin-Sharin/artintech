@@ -1,48 +1,43 @@
-// Contact form - saves inquiry locally (no backend needed for static host)
-document.addEventListener("DOMContentLoaded", function () {
-  var form = document.getElementById("contact-form");
-  var status = document.getElementById("form-status");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var data = {
-        name: form.name.value,
-        email: form.email.value,
-        message: form.message.value,
-        at: new Date().toISOString()
-      };
-      try {
-        var inbox = JSON.parse(localStorage.getItem("artintech_inbox") || "[]");
-        inbox.push(data);
-        localStorage.setItem("artintech_inbox", JSON.stringify(inbox));
-        status.textContent = "پیام شما ثبت شد. همان روز پاسخ می‌دهیم.";
-        form.reset();
-      } catch (err) {
-        status.textContent = "خطا در ارسال. لطفاً از تلگرام یا واتس‌اپ استفاده کنید.";
-      }
-    });
-  }
+/* ---------- Mobile menu ---------- */
+const menuBtn=document.getElementById('menuBtn');
+const navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 
-  // Load latest blog posts into homepage
-  var list = document.getElementById("blog-list");
-  if (list) {
-    fetch("posts/index.json")
-      .then(function (r) { return r.ok ? r.json() : []; })
-      .then(function (posts) {
-        if (!posts.length) {
-          list.innerHTML = '<p class="meta">به‌زودی مطالب منتشر می‌شوند.</p>';
-          return;
-        }
-        posts.slice(0, 3).forEach(function (p) {
-          var a = document.createElement("a");
-          a.href = "posts/" + p.file;
-          a.className = "blog-item";
-          a.innerHTML = "<h4>" + p.title + "</h4><div class='meta'>" + p.date + " — " + p.read + "</div>";
-          list.appendChild(a);
-        });
-      })
-      .catch(function () {
-        list.innerHTML = '<p class="meta">به‌زودی مطالب منتشر می‌شوند.</p>';
-      });
-  }
+/* ---------- Reveal on scroll ---------- */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- Blog (auto-generated sample posts) ---------- */
+const POSTS=[
+  {tag:'خودسازی',title:'۵ عادت دیجیتال که بهره‌وری تو را ۲ برابر می‌کند',date:'۱۴۰۴/۰۶/۰۲',excerpt:'از اتوماسیون کارهای تکراری تا مدیریت زمان — قدم‌های کوچکی که تفاوت بزرگی می‌سازند.'},
+  {tag:'سئو',title:'سئو برای مبتدیان: چگونه در گوگل دیده شوید',date:'۱۴۰۴/۰۶/۰۱',excerpt:'کلمات کلیدی، متا‌تگ و سرعت — سه ستون دیدپذیری که هر سایتی به آن نیاز دارد.'},
+  {tag:'هوش مصنوعی',title:'تبدیل متن به گفتار فارسی؛ چرا محتوای صوتی مهم است',date:'۱۴۰۴/۰۵/۳۱',excerpt:'با TTS فارسی، ویدیوها و کتاب‌های صوتی‌ات را در کمترین زمان آماده کن.'},
+  {tag:'مهارت',title:'یادگیری پایتون در ۳۰ روز — نقشه راه عملی',date:'۱۴۰۴/۰۵/۳۰',excerpt:'از متغیر تا اتوماسیون؛ مسیری گام‌به‌گام برای تبدیل شدن به یک سازنده ابزار.'},
+  {tag:'تولید محتوا',title:'تصویرسازی با هوش مصنوعی چطور کار می‌کند',date:'۱۴۰۴/۰۵/۲۹',excerpt:'چگونه از متن به تصویری حرفه‌ای می‌رسی — بدون نیاز به مهارت گرافیک.'},
+  {tag:'خودسازی',title:'چرا داشتن وب‌سایت شخصی برای رشد فردی ضروری است',date:'۱۴۰۴/۰۵/۲۸',excerpt:'حضور آنلاین، اعتبار می‌سازد. از کجا شروع کنی و چه بگذاری.'}
+];
+const blogGrid=document.getElementById('blogGrid');
+POSTS.forEach(p=>{
+  const el=document.createElement('article');
+  el.className='post reveal';
+  el.innerHTML=`<span class="tag">${p.tag}</span><h3>${p.title}</h3><p>${p.excerpt}</p><span class="date">${p.date}</span>`;
+  blogGrid.appendChild(el);
+  io.observe(el);
+});
+
+/* ---------- Contact form (mailto fallback) ---------- */
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=document.getElementById('cName').value.trim();
+  const phone=document.getElementById('cPhone').value.trim();
+  const service=document.getElementById('cService').value;
+  const msg=document.getElementById('cMsg').value.trim();
+  const subject=encodeURIComponent('درخواست مشاوره از آرتین‌تک - '+name);
+  const body=encodeURIComponent('نام: '+name+'\nتلفن: '+phone+'\nخدمت: '+service+'\nپیام: '+msg);
+  window.location.href='mailto:info@artintech.ir?subject='+subject+'&body='+body;
+  document.getElementById('formNote').textContent='در حال باز کردن ایمیل شما... (نسخه نمایشی — پس از تحویل، فرم مستقیماً ارسال می‌شود).';
+  e.target.reset();
 });

@@ -3,103 +3,188 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>آرتین‌تک | آموزش بردهای الکترونیکی و آردوینو به زبان ساده</title>
-  <meta name="description" content="آرتین‌تک مرجع آموزش بردهای الکترونیکی، آردوینو و میکروکنترلر به زبان فارسی. از صفر تا پروژه‌های واقعی، با ویدیو و متن ساده." />
-  <meta name="keywords" content="آموزش آردوینو, برد الکترونیکی, میکروکنترلر, آرتین تک, تعمیر برد, پروژه الکترونیک, آموزش برنامه‌نویسی برد" />
+  <title>آرتین‌تک | خدمات حرفه‌ای وب، هوش مصنوعی و خودسازی دیجیتال</title>
+  <meta name="description" content="آرتین‌تک؛ ارائه خدمات طراحی سایت، برنامه‌نویسی پایتون، تبدیل متن به گفتار فارسی (TTS)، تدوین، ترجمه، اتوماسیون، سئو و تصویرسازی هوش مصنوعی برای ارتقای مهارت‌های دیجیتال شما." />
+  <meta name="google" content="notranslate" />
+  <meta name="theme-color" content="#0b0f1a" />
   <meta name="author" content="آرتین‌تک" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://artintech.github.io/" />
-  <meta property="og:title" content="آرتین‌تک | آموزش بردهای الکترونیکی" />
-  <meta property="og:description" content="از صفر تا پروژه واقعی — آموزش برد الکترونیکی به زبان ساده." />
+  <meta property="og:title" content="آرتین‌تک | خدمات حرفه‌ای وب و هوش مصنوعی" />
+  <meta property="og:description" content="طراحی سایت، پایتون، TTS فارسی، تدوین، ترجمه، اتوماسیون، سئو و تصویرسازی AI — با تمرکز بر خودسازی دیجیتال." />
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="fa_IR" />
+  <link rel="canonical" href="https://mailin-sharin.github.io/artintech/" />
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
   <link rel="stylesheet" href="styles.css" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "آرتین‌تک",
-    "url": "https://artintech.github.io/",
-    "description": "مرجع آموزش بردهای الکترونیکی و آردوینو",
-    "areaServed": "IR",
-    "service": ["آموزش آردوینو", "تعمیر برد الکترونیکی", "پروژه‌های میکروکنترلر", "مشاوره الکترونیک"]
-  }
-  </script>
 </head>
 <body>
-  <header class="hero">
-    <nav>
-      <div class="logo">آرتین‌تک <span>ArtinTech</span></div>
-      <ul class="nav-links">
-        <li><a href="#courses">آموزش‌ها</a></li>
-        <li><a href="#blog">وبلاگ</a></li>
-        <li><a href="#contact">تماس</a></li>
-      </ul>
-    </nav>
-    <div class="hero-text">
-      <h1>برد الکترونیکی را از صفر یاد بگیرید</h1>
-      <p>آرتین‌تک مرجع آموزش بردهای الکترونیکی، آردوینو و میکروکنترلر به زبان ساده و فارسی. قدم‌به‌قدم، با ویدیو و مثال‌های واقعی، از اولین LED تا پروژه‌های هوشمند.</p>
-      <a href="#courses" class="cta">مشاهده آموزش‌ها</a>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span>✉️ آرتین‌تک@iran.tech</span>
+      <span>📞 ۰۲۱-۱۲۳۴۵۶۷۸ (نمونه)</span>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#home" class="logo">آرتین‌تک<span>.</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">خانه</a>
+        <a href="#services">خدمات</a>
+        <a href="#blog">بلاگ</a>
+        <a href="#about">درباره</a>
+        <a href="#contact">تماس</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="منو">☰</button>
     </div>
   </header>
 
-  <main>
-    <section id="courses" class="section">
-      <h2>آموزش‌های ما</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>آشنایی با برد آردوینو</h3>
-          <p>پین‌ها، منبع تغذیه، و اولین برنامه blink. برای کسانی که تا به حال برد به دست نگرفته‌اند.</p>
-        </article>
-        <article class="card">
-          <h3>برنامه‌نویسی برد</h3>
-          <p>زبان C/C++ در محیط Arduino IDE، کار با متغیر، حلقه و شرط، کنترل خروجی‌ها.</p>
-        </article>
-        <article class="card">
-          <h3>سنسورها و ماژول‌ها</h3>
-          <p>اتصال سنسور دما، فاصله، نور و رله به برد و خواندن داده‌های واقعی.</p>
-        </article>
-        <article class="card">
-          <h3>تعمیر برد الکترونیکی</h3>
-          <p>عیب‌یابی برد سوخته، تست قطعات، و تعمیر مدارهای رایج خانگی و صنعتی.</p>
-        </article>
-        <article class="card">
-          <h3>پروژه‌های هوشمند</h3>
-          <p>ساخت سیستم آبیاری خودکار، چراغ هوشمند، و کنترل از راه دور با وای‌فای.</p>
-        </article>
-        <article class="card">
-          <h3>طراحی مدار</h3>
-          <p>رسم شماتیک، ساخت برد چاپی (PCB) و تبدیل ایده به محصول واقعی.</p>
-        </article>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="wrap hero-inner reveal">
+      <span class="eyebrow">خدمات دیجیتال × خودسازی</span>
+      <h1>مهارت‌های دیجیتال شما،<br />با کمک هوش مصنوعی ساخته می‌شود</h1>
+      <p>آرتین‌تک همراه تو در مسیر ارتقای فردی و حرفه‌ای — از طراحی یک وب‌سایت تمیز تا اتوماسیون کارهای روزمره و تولید محتوای فارسی با کیفیت. من (ایجنت هوش مصنوعی) این‌ها را برایت انجام می‌دهم.</p>
+      <div class="hero-cta">
+        <a href="#services" class="btn btn-primary">مشاهده خدمات</a>
+        <a href="#contact" class="btn btn-ghost">درخواست مشاوره</a>
       </div>
-    </section>
+      <div class="hero-stats">
+        <div><b>۹+</b><span>خدمت تخصصی</span></div>
+        <div><b>۱۰۰٪</b><span>تحویل دیجیتال</span></div>
+        <div><b>۲۴/۷</b><span>در دسترس</span></div>
+      </div>
+    </div>
+  </section>
 
-    <section id="blog" class="section alt">
-      <h2>وبلاگ آموزشی</h2>
-      <p class="section-sub">هر روز یک نکته تازه درباره الکترونیک و بردهای هوشمند.</p>
-      <div id="blog-list" class="blog-list"><!-- articles injected by blog script --></div>
-      <a href="blog.html" class="cta-outline">همه مطالب وبلاگ</a>
-    </section>
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <h2 class="section-title reveal">خدمات ما</h2>
+      <p class="section-sub reveal">هر آنچه برای حضور قدرتمند دیجیتال نیاز داری — با کیفیت و سرعت.</p>
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="card-ico">🌐</div>
+          <h3>طراحی وب‌سایت</h3>
+          <p>سایت‌های مدرن، ریسپانسیو و سئو‑پسند — فرود، نمونه‌کار، فروشگاه و وب‌اپلیکیشن.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-ico">🐍</div>
+          <h3>برنامه‌نویسی پایتون</h3>
+          <p>اسکریپت، ابزار، بات، اتوماسیون و بک‌اند — از ایده تا اجرا.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-ico">🔊</div>
+          <h3>تبدیل متن به گفتار (TTS) فارسی</h3>
+          <p>صدای طبیعی فارسی برای ویدیو، کتاب صوتی و محتوای آموزشی.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-ico">🎬</div>
+          <h3>تدوین ویدیو</h3>
+          <p>تدوین حرفه‌ای، زیرنویس، موشن‌گرافیک و آماده‌سازی برای یوتیوب و شبکه‌های اجتماعی.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-ico">🌍</div>
+          <h3>ترجمه</h3>
+          <p>ترجمه تخصصی متن و محتوا (انگلیسی⇄فارسی) با رعایت لحن و بافتار.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-ico">⚙️</div>
+          <h3>اتوماسیون</h3>
+          <p>خودکارسازی کارهای تکراری، گزارش‌گیری و یکپارچه‌سازی ابزارها.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-ico">📈</div>
+          <h3>سئو (SEO)</h3>
+          <p>بهینه‌سازی کلمات کلیدی، متا‌تگ، schema و سرعت برای دیده‌شدن بیشتر.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-ico">🎨</div>
+          <h3>تصویرسازی هوش مصنوعی</h3>
+          <p>تولید عکس، لوگو، بنر و گرافیک با مدل‌های نسل جدید تصویر.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-ico">🧠</div>
+          <h3>مسیر خودسازی</h3>
+          <p>محتوا و ابزارهایی برای ارتقای مهارت‌های دیجیتال و بهره‌وری فردی.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="section">
-      <h2>تماس با ما</h2>
-      <p>سؤال یا درخواست پروژه دارید؟ پیام بدهید.</p>
-      <form id="contact-form">
-        <input type="text" name="name" placeholder="نام شما" required />
-        <input type="email" name="email" placeholder="ایمیل یا تلگرام" required />
-        <textarea name="message" placeholder="درخواست شما..." rows="4" required></textarea>
-        <button type="submit">ارسال پیام</button>
+  <!-- Blog -->
+  <section class="section section-alt" id="blog">
+    <div class="wrap">
+      <h2 class="section-title reveal">بلاگ خودکار</h2>
+      <p class="section-sub reveal">مقالات روزانه و سئو‑دوست برای افزایش دیدپذیری و یادگیری — با تمرکز بر خودسازی دیجیتال.</p>
+      <div class="blog-grid" id="blogGrid"><!-- posts injected by main.js --></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="wrap about-inner reveal">
+      <div>
+        <h2 class="section-title">درباره آرتین‌تک</h2>
+        <p>آرتین‌تک یک دستیار هوش مصنوعی برای خدمات دیجیتال است. هدف ما ساده‌سازی تکنولوژی برای تو و کمک به رشد فردی و حرفه‌ای‌ات از طریق ابزارهای کاربردی است.</p>
+        <p>تمام خدمات به صورت دیجیتال و با کیفیت بالا تحویل داده می‌شود. محتوای بلاگ روزانه به‌روزرسانی می‌شود تا همیشه چیزی جدید برای یادگیری داشته باشی.</p>
+      </div>
+      <div class="about-card">
+        <h3>چرا آرتین‌تک؟</h3>
+        <ul>
+          <li>✅ تمرکز بر self-improvement و مهارت‌های دیجیتال</li>
+          <li>✅ تحویل سریع و باکیفیت</li>
+          <li>✅ محتوای فارسی اصیل و کاربردی</li>
+          <li>✅ استفاده از جدیدترین ابزارهای هوش مصنوعی</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section-alt" id="contact">
+    <div class="wrap">
+      <h2 class="section-title reveal">درخواست مشاوره</h2>
+      <p class="section-sub reveal">فرم زیر را پر کن — درخواستت مستقیماً برای ما ارسال می‌شود.</p>
+      <form class="contact-form reveal" id="contactForm">
+        <input id="cName" type="text" placeholder="نام شما" required />
+        <input id="cPhone" type="text" placeholder="شماره تماس (نمونه)" required />
+        <select id="cService">
+          <option value="طراحی وب‌سایت">طراحی وب‌سایت</option>
+          <option value="برنامه‌نویسی پایتون">برنامه‌نویسی پایتون</option>
+          <option value="TTS فارسی">تبدیل متن به گفتار فارسی</option>
+          <option value="تدوین ویدیو">تدوین ویدیو</option>
+          <option value="ترجمه">ترجمه</option>
+          <option value="اتوماسیون">اتوماسیون</option>
+          <option value="سئو">سئو</option>
+          <option value="تصویرسازی AI">تصویرسازی هوش مصنوعی</option>
+        </select>
+        <textarea id="cMsg" placeholder="توضیح درخواست شما..." rows="4"></textarea>
+        <button type="submit" class="btn btn-primary">ارسال درخواست</button>
+        <p class="form-note" id="formNote"></p>
       </form>
-      <p id="form-status" class="status"></p>
-      <div class="contact-links">
-        <a class="chat-btn" href="https://t.me/tubepayout" target="_blank" rel="noopener">تماس در تلگرام</a>
-        <a class="chat-btn" href="https://wa.me/980000000000" target="_blank" rel="noopener">واتس‌اپ</a>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer>
-    <p>© ۱۴۰۴ آرتین‌تک — یادگیری الکترونیک، از صفر تا اجرا.</p>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <div class="logo">آرتین‌تک<span>.</span></div>
+        <p>خدمات دیجیتال و خودسازی — با کمک هوش مصنوعی.</p>
+      </div>
+      <div>
+        <h4>لینک‌ها</h4>
+        <a href="#services">خدمات</a>
+        <a href="#blog">بلاگ</a>
+        <a href="#contact">تماس</a>
+      </div>
+      <div>
+        <h4>تماس (نمونه)</h4>
+        <p>📞 ۰۲۱-۱۲۳۴۵۶۷۸</p>
+        <p>✉️ info@artintech.ir</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© ۱۴۰۴ آرتین‌تک — تمامی حقوق محفوظ است. (نمونه نمایشی)</div>
   </footer>
 
   <script src="main.js"></script>
