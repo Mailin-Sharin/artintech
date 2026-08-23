@@ -1,8 +1,13 @@
 /* ---------- Mobile menu ---------- */
 const menuBtn=document.getElementById('menuBtn');
 const navLinks=document.getElementById('navLinks');
+const navClose=document.getElementById('navClose');
+const navBackdrop=document.getElementById('navBackdrop');
+function closeMenu(){navLinks.classList.remove('open')}
 menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+navClose.addEventListener('click',closeMenu);
+navBackdrop.addEventListener('click',closeMenu);
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 
 /* ---------- Reveal on scroll ---------- */
 const io=new IntersectionObserver(entries=>{
@@ -35,9 +40,13 @@ document.getElementById('contactForm').addEventListener('submit',e=>{
   const phone=document.getElementById('cPhone').value.trim();
   const service=document.getElementById('cService').value;
   const msg=document.getElementById('cMsg').value.trim();
-  const subject=encodeURIComponent('درخواست مشاوره از آرتین‌تک - '+name);
-  const body=encodeURIComponent('نام: '+name+'\nتلفن: '+phone+'\nخدمت: '+service+'\nپیام: '+msg);
-  window.location.href='mailto:info@artintech.ir?subject='+subject+'&body='+body;
-  document.getElementById('formNote').textContent='در حال باز کردن ایمیل شما... (نسخه نمایشی — پس از تحویل، فرم مستقیماً ارسال می‌شود).';
+  const subject='درخواست مشاوره از آرتین‌تک - '+name;
+  const body='نام: '+name+'\nتلفن: '+phone+'\nخدمت: '+service+'\nپیام: '+msg;
+  // Try mailto; also surface the text so the lead is never lost on mail-less devices.
+  window.location.href='mailto:info@artintech.ir?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  const note=document.getElementById('formNote');
+  note.textContent='درخواست شما آماده ارسال شد ✅ لطفاً ایمیل بازشده را ارسال کنید. (نسخه نمایشی — پس از تحویل، فرم مستقیماً و بدون نیاز به ایمیل برای ما ارسال می‌شود.)';
+  // Copy to clipboard as a safety net
+  if(navigator.clipboard){navigator.clipboard.writeText('موضوع: '+subject+'\n'+body).catch(()=>{});}
   e.target.reset();
 });
