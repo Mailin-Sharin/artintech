@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>وبلاگ آرتین‌تک | خودسازی دیجیتال و مهارت‌های رشد</title>
+  <meta name="description" content="مقالات روزانه درباره خودسازی، مهارت‌های دیجیتال، هوش‌مصنوعی و رشد فردی." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <div class="logo">آرتین‌تک <span>ArtinTech</span></div>
+      <ul class="nav-links"><li><a href="index.html">خانه</a></li><li><a href="#all">همه مطالب</a></li></ul>
+    </nav>
+    <div class="hero-text"><h1>وبلاگ خودسازی دیجیتال</h1><p>هر روز یک قدم برای بهتر شدن.</p></div>
+  </header>
+  <main>
+    <section class="section">
+      <div id="all" class="blog-list"><!-- all posts injected --></div>
+    </section>
+  </main>
+  <footer><p>© ۱۴۰۴ آرتین‌تک</p></footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var all = document.getElementById("all");
+      fetch("posts/index.json").then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (posts) {
+          if (!posts.length) { all.innerHTML = '<p class="meta">به‌زودی...</p>'; return; }
+          posts.forEach(function (p) {
+            var a = document.createElement("a");
+            a.href = "posts/" + p.file; a.className = "blog-item";
+            a.innerHTML = "<h4>" + p.title + "</h4><div class='meta'>" + p.date + " — " + p.read + "</div>";
+            all.appendChild(a);
+          });
+        });
+    });
+  </script>
+</body>
+</html>
