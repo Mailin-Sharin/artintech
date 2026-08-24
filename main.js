@@ -11,7 +11,7 @@ async function loadJSON(f){
 }
 function showDataError(){
   document.querySelectorAll('#servicesGrid,#storeGrid,#blogGrid').forEach(g=>{
-    if(g && g.children.length===0){g.innerHTML='<p style="color:var(--muted);grid-column:1/-1">⚠️ برای نمایش کامل، سایت باید روی سرور باز شود (مثلاً با دستور <code>python -m http.server</code>) — باز کردن مستقیم فایل باعث عدم بارگذاری می‌شود.</p>';}
+    if(g && g.children.length===0){g.innerHTML='<p style="color:var(--muted);grid-column:1/-1">⚠️ برای نمایش کامل، سایت باید روی سرور باز شود (مثلاً با دستور python -m http.server) — باز کردن مستقیم فایل باعث عدم بارگذاری می‌شود.</p>';}
   });
 }
 
@@ -26,10 +26,10 @@ navClose.addEventListener('click',closeMenu);
 navBackdrop.addEventListener('click',closeMenu);
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 
-/* ---------- Reveal on scroll ---------- */
+/* ---------- Reveal on scroll (with safety fallback) ---------- */
 const io=new IntersectionObserver(entries=>{
   entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
-},{threshold:.12});
+},{threshold:.01, rootMargin:"0px 0px -30px 0px"});
 function observeReveal(el){io.observe(el)}
 
 /* ---------- Services (from settings.json) ---------- */
@@ -91,3 +91,5 @@ if(form){
 
 /* ---------- init ---------- */
 renderServices();renderStore();renderBlog();
+/* Safety: force-show anything still hidden after 1.2s (covers observer edge cases / render after scroll) */
+setTimeout(()=>{document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in'));},1200);
