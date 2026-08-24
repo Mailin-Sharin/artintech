@@ -1,4 +1,5 @@
 /* ===== ArtinTech — interactive canvas bg + dynamic content ===== */
+document.body.classList.add('js-ready');
 const DATA_BASE='data/';
 const _cache={};
 async function loadJSON(f){if(_cache[f])return _cache[f];try{const r=await fetch(DATA_BASE+f);if(!r.ok){showDataError();return null;}const j=await r.json();_cache[f]=j;return j;}catch(e){showDataError();return null;}}
