@@ -76,6 +76,26 @@ function sample(id){
 const form=document.getElementById('contactForm');
 if(form)form.addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('cName').value.trim(),phone=document.getElementById('cPhone').value.trim(),service=document.getElementById('cService').value,msg=document.getElementById('cMsg').value.trim();window.location.href='mailto:info@artintech.ir?subject='+encodeURIComponent('درخواست از آرتین‌تک - '+name)+'&body='+encodeURIComponent(`نام: ${name}\nتلفن: ${phone}\nخدمت: ${service}\nپیام: ${msg}`);document.getElementById('formNote').textContent='درخواست آماده ارسال شد ✅';if(navigator.clipboard)navigator.clipboard.writeText(`نام: ${name} | ${service}`).catch(()=>{});e.target.reset();});
 
+/* ----- render training ----- */
+async function renderTraining(){
+  const s=await loadJSON('settings.json');if(!s)return;
+  const w=document.getElementById('trainingGrid');
+  (s.training||[]).forEach(c=>{const el=document.createElement('article');el.className='course reveal';
+    const priceHtml=c.free?'<span class="price free">رایگان</span>':`<span class="price">${c.price}</span>`;
+    const link=c.shopId?`<a href="#store" class="shop-link mag">مشاهده در فروشگاه ←</a>`:'';
+    el.innerHTML=`<div class="lv">${c.level}</div><h3>${c.t}</h3><p>${c.d}</p>${priceHtml}${link}`;
+    if(c.shopId)el.querySelector('.shop-link').addEventListener('click',()=>document.getElementById('store').scrollIntoView({behavior:'smooth'}));
+    w.appendChild(el);io.observe(el);});
+}
+/* ----- render store ----- */
+async function renderStore(){
+  const s=await loadJSON('settings.json');if(!s||!s.store||!s.store.enabled)return;
+  const w=document.getElementById('storeGrid');
+  (s.store.items||[]).forEach(it=>{const el=document.createElement('article');el.className='product reveal';
+    el.innerHTML=`<span class="cat">${it.cat}</span><h3>${it.name}</h3><p>${it.desc}</p><div class="price">${it.price}</div><a href="#contact" class="btn btn-primary mag buy">درخواست / خرید</a>`;
+    w.appendChild(el);io.observe(el);});
+}
+
 /* ----- init ----- */
-renderServices();renderWork();renderSteps();
+renderServices();renderWork();renderSteps();renderTraining();renderStore();
 setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),1300);
