@@ -1,14 +1,27 @@
 /* ===== ArtinTech dynamic loader (content from data/*.json) ===== */
 const DATA_BASE='data/';
-async function loadJSON(f){try{const r=await fetch(DATA_BASE+f);if(!r.ok)return null;return await r.json();}catch(e){return null;}}
+const _cache={};
+async function loadJSON(f){
+  if(_cache[f])return _cache[f];
+  try{
+    const r=await fetch(DATA_BASE+f);
+    if(!r.ok){showDataError();return null;}
+    const j=await r.json();_cache[f]=j;return j;
+  }catch(e){showDataError();return null;}
+}
+function showDataError(){
+  document.querySelectorAll('#servicesGrid,#storeGrid,#blogGrid').forEach(g=>{
+    if(g && g.children.length===0){g.innerHTML='<p style="color:var(--muted);grid-column:1/-1">⚠️ برای نمایش کامل، سایت باید روی سرور باز شود (مثلاً با دستور <code>python -m http.server</code>) — باز کردن مستقیم فایل باعث عدم بارگذاری می‌شود.</p>';}
+  });
+}
 
 /* ---------- Mobile menu ---------- */
 const menuBtn=document.getElementById('menuBtn');
 const navLinks=document.getElementById('navLinks');
 const navClose=document.getElementById('navClose');
 const navBackdrop=document.getElementById('navBackdrop');
-function closeMenu(){navLinks.classList.remove('open')}
-menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+function closeMenu(){navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}
+menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open?'true':'false')});
 navClose.addEventListener('click',closeMenu);
 navBackdrop.addEventListener('click',closeMenu);
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));

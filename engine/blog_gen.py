@@ -21,11 +21,31 @@ def load_settings():
         return json.load(f)
 
 def shamsi_today():
-    # simple approximate Jalali date (good enough for display)
+    # Gregorian -> Jalali (standard algorithm, no deps)
     g = datetime.date.today()
-    # offset to Persian new year (approx)
-    j = g + datetime.timedelta(days=5843)  # 2026-ish baseline; display only
-    return f"{j.year}/{j.month:02d}/{j.day:02d}"
+    gy, gm, gd = g.year, g.month, g.day
+    g_days_in_month = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29]
+    j_days_in_month = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29]
+    gy2 = (gy + 1) if gm > 2 else gy
+    jnp = 355666 + (365 * gy) + ((gy2 + 3) // 4) - ((gy2 + 99) // 100) + ((gy2 + 199) // 400)
+    for i in range(gm - 1):
+        jnp += g_days_in_month[i]
+    jnp += gd - 1
+    jy = -1595 + (33 * (jnp // 12053))
+    jnp %= 12053
+    jy += 4 * (jnp // 1461)
+    jnp %= 1461
+    if jnp >= 366:
+        jy += (jnp - 1) // 365
+        jnp = (jnp - 1) % 365
+    for i in range(11):
+        if jnp >= j_days_in_month[i]:
+            jnp -= j_days_in_month[i]
+        else:
+            break
+    jm = i + 1
+    jd = jnp + 1
+    return f"{jy}/{jm:02d}/{jd:02d}"
 
 def gen_article(topic):
     """Local generator: builds a structured SEO article without external API."""

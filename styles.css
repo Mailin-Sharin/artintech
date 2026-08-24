@@ -125,8 +125,8 @@ a{color:inherit;text-decoration:none}
   .footer-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:680px){
-  .nav-links{position:fixed;inset-block-start:0;inset-inline-end:-100%;height:100vh;width:80vw;max-width:320px;background:var(--bg2);flex-direction:column;padding:80px 22px;gap:6px;transition:inset-inline-end .3s ease;border-inline-start:1px solid var(--border);z-index:55}
-  .nav-links.open{inset-inline-end:0}
+  .nav-links{position:fixed;inset-block-start:0;inset-inline-end:0;height:100vh;width:80vw;max-width:320px;background:var(--bg2);flex-direction:column;padding:80px 22px;gap:6px;transform:translateX(100%);transition:transform .3s ease;border-inline-start:1px solid var(--border);z-index:55}
+  .nav-links.open{transform:translateX(0)}
   .nav-links.open .nav-close{display:block}
   .nav-links.open ~ .nav-backdrop{display:block}
   html,body{overflow-x:hidden}
