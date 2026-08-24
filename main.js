@@ -36,10 +36,11 @@ function revealAll(){document.querySelectorAll('.reveal').forEach(el=>io.observe
 window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('scrollProgress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
 
 /* ----- render services ----- */
+const ICONS={web:"وب",python:"PY",video:"وی",translate:"تر",automation:"ات",seo:"سئو",ai:"گر",content:"مت",chatbot:"بات",data:"داده",selfdev:"خود",training:"آم"};
 async function renderServices(){
   const s=await loadJSON('settings.json');if(!s)return;
   const w=document.getElementById('servicesGrid');
-  s.services.forEach(sv=>{const el=document.createElement('article');el.className='service reveal';el.innerHTML=`<div class="ic">${sv.ic}</div><h3>${sv.t}</h3><p>${sv.d}</p><div class="more">مشاهده نمونه‌کار ←</div>`;bindTilt(el);el.addEventListener('click',()=>openModal(sv));w.appendChild(el);io.observe(el);});
+  s.services.forEach(sv=>{const el=document.createElement('article');el.className='service reveal';const ic=ICONS[sv.id]||'★';el.innerHTML=`<div class="ic">${ic}</div><h3>${sv.t}</h3><p>${sv.d}</p><div class="more">مشاهده نمونه‌کار ←</div>`;bindTilt(el);el.addEventListener('click',()=>openModal(sv));w.appendChild(el);io.observe(el);});
 }
 /* ----- render work (mockups) ----- */
 async function renderWork(){
