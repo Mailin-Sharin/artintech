@@ -4,17 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>آرتین‌تک | استودیو خدمات دیجیتال</title>
-  <meta name="description" content="آرتین‌تک استودیوی خدمات دیجیتال: طراحی وب، برنامه‌نویسی پایتون، تصویرسازی، سئو، اتوماسیون و آموزش." />
+  <meta name="description" content="آرتین‌تک استودیوی خدمات دیجیتال: طراحی وب، پایتون، تصویرسازی، سئو، اتوماسیون و آموزش با بالاترین کیفیت." />
   <meta name="google" content="notranslate" />
-  <link rel="stylesheet" href="styles.css?v=7" />
-  <script src="main.js?v=7"></script>
+  <link rel="stylesheet" href="styles.css?v=10" />
+  <script src="main.js?v=10" defer></script>
 </head>
 <body>
   <canvas id="bg"></canvas>
   <div class="cursor-glow"></div>
   <div class="scroll-progress"></div>
 
-  <!-- NAV (floating glass pill) -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="#home" class="logo">آرتین<span>‌تک</span></a>
@@ -34,86 +33,77 @@
     <div class="nav-backdrop" id="navBackdrop"></div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO: split with LIVE interactive widget -->
   <section class="hero" id="home">
-    <div class="wrap hero-inner">
-      <span class="badge reveal">⚡ استودیو خدمات دیجیتال</span>
-      <h1 class="reveal">ما ایده‌هایت را<br/><span class="grad">می‌سازیم</span></h1>
-      <p class="lead reveal">آرتین‌تک وب‌سایت، ابزار و محتوایی می‌سازد که مشتریانت را متوقف می‌کند. طراحی مدرن، کد تمیز، تحویل سریع.</p>
-      <div class="hero-actions reveal">
-        <a href="#work" class="btn btn-primary mag">نمونه‌کار را ببین</a>
-        <a href="#contact" class="btn btn-ghost mag">شروع همکاری</a>
-      </div>
-      <div class="hero-metrics reveal">
-        <div><b data-count="12">۰</b><span>خدمت تخصصی</span></div>
-        <div><b data-count="48">۰</b><span>پروژه تحویلی</span></div>
-        <div><b data-count="24">۰</b><span>ساعته پاسخ‌گو</span></div>
-      </div>
-    </div>
-    <div class="hero-visual reveal" aria-hidden="true">
-      <div class="hv-window">
-        <div class="hv-bar"><span></span><span></span><span></span></div>
-        <div class="hv-body">
-          <div class="hv-row"><div class="hv-dot c1"></div><b>طراحی وب</b><i>تمام‌شده</i></div>
-          <div class="hv-row"><div class="hv-dot c2"></div><b>پایتون</b><i>در جریان</i></div>
-          <div class="hv-row"><div class="hv-dot c3"></div><b>تصویرسازی</b><i>تمام‌شده</i></div>
+    <div class="wrap hero-grid">
+      <div class="hero-pitch reveal">
+        <span class="badge">⚡ استودیو خدمات دیجیتال</span>
+        <h1>ایده‌هایت را<br/><span class="grad">زنده</span> می‌کنیم</h1>
+        <p class="lead">آرتین‌تک ابزار، سایت و محتوایی می‌سازد که مشتریانت را متوقف می‌کند. خدمتت را انتخاب کن — پیش‌نمایشش را همین‌جا ببین.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn btn-primary mag">نمونه‌کار</a>
+          <a href="#contact" class="btn btn-ghost mag">شروع همکاری</a>
         </div>
-        <div class="hv-spark"></div>
+        <div class="hero-metrics">
+          <div><b data-count="12">۰</b><span>خدمت</span></div>
+          <div><b data-count="48">۰</b><span>پروژه</span></div>
+          <div><b data-count="24">۰</b><span>ساعت پاسخ</span></div>
+        </div>
       </div>
-      <div class="hv-badge b1">⚡ سئو +۹۸٪</div>
-      <div class="hv-badge b2">🎯 ۴۸ پروژه</div>
+
+      <!-- LIVE interactive widget -->
+      <div class="hero-widget reveal" id="heroWidget">
+        <div class="hw-tabs" id="hwTabs"></div>
+        <div class="hw-stage" id="hwStage"></div>
+      </div>
     </div>
+    <div class="hero-orb"></div>
   </section>
 
-  <!-- SERVICES -->
   <section class="section" id="services">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="kicker">خدمات</span>
         <h2>آنچه انجام می‌دهیم</h2>
-        <p>۱۲ خدمت تخصصی برای رشد دیجیتال تو — روی هر کارت کلیک کن تا نمونه‌کار ببینی.</p>
+        <p>۱۲ خدمت تخصصی — روی هر کارت کلیک کن تا جزئیات ببینی.</p>
       </div>
       <div class="services" id="servicesGrid"></div>
     </div>
   </section>
 
-  <!-- WORK -->
   <section class="section section-alt" id="work">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="kicker">نمونه‌کار</span>
         <h2>پروژه‌های اخیر</h2>
-        <p>اسکرول افقی کن — هر کارت یه نمونه واقعی از کار ماست.</p>
+        <p>اسکرول افقی کن — هر کارت یه نمونه واقعیه.</p>
       </div>
     </div>
     <div class="work-strip" id="workStrip"></div>
   </section>
 
-  <!-- STORE -->
   <section class="section" id="store">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="kicker">فروشگاه دیجیتال</span>
         <h2>محصولات و دوره‌ها</h2>
-        <p>ابزارها و دوره‌های آماده برای شروع سریع‌تر — بخشی از آن‌ها در بخش آموزش هم معرفی شده‌اند.</p>
+        <p>ابزارها و دوره‌های آماده — بخشی در بخش آموزش هم هستن.</p>
       </div>
       <div class="store" id="storeGrid"></div>
     </div>
   </section>
 
-  <!-- TRAINING -->
   <section class="section section-alt" id="training">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="kicker">آموزش</span>
         <h2>دوره‌ها و محتوای آموزشی</h2>
-        <p>مسیر گام‌به‌گام برای یادگیری مهارت‌های دیجیتال — بخشی از آن‌ها در فروشگاه هم موجود است.</p>
+        <p>مسیر گام‌به‌گام یادگیری مهارت‌های دیجیتال.</p>
       </div>
       <div class="training" id="trainingGrid"></div>
     </div>
   </section>
 
-  <!-- PROCESS -->
   <section class="section" id="process">
     <div class="wrap">
       <div class="section-head reveal">
@@ -124,7 +114,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section class="section section-alt" id="about">
     <div class="wrap about">
       <div class="about-text reveal">
@@ -135,7 +124,7 @@
           <li>✅ طراحی مدرن و ریسپانسیو</li>
           <li>✅ کد تمیز و قابل نگهداری</li>
           <li>✅ تحویل به‌موقع و پشتیبانی</li>
-          <li>✅ استفاده از جدیدترین ابزارهای دیجیتال</li>
+          <li>✅ جدیدترین ابزارهای دیجیتال</li>
         </ul>
       </div>
       <div class="about-card reveal">
@@ -144,7 +133,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="wrap contact">
       <div class="section-head reveal">
@@ -181,30 +169,15 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="wrap footer-inner">
-      <div>
-        <h4>آرتین‌تک</h4>
-        <p>استودیو خدمات دیجیتال.</p>
-      </div>
-      <div>
-        <h4>لینک‌ها</h4>
-        <a href="#services">خدمات</a>
-        <a href="#work">نمونه‌کار</a>
-        <a href="#training">آموزش</a>
-        <a href="#store">فروشگاه</a>
-      </div>
-      <div>
-        <h4>تماس</h4>
-        <p>ایمیل: info@artintech.ir (نمونه)</p>
-        <p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸ (نمونه)</p>
-      </div>
+      <div><h4>آرتین‌تک</h4><p>استودیو خدمات دیجیتال.</p></div>
+      <div><h4>لینک‌ها</h4><a href="#services">خدمات</a><a href="#work">نمونه‌کار</a><a href="#training">آموزش</a><a href="#store">فروشگاه</a></div>
+      <div><h4>تماس</h4><p>info@artintech.ir (نمونه)</p><p>۰۲۱-۱۲۳۴۵۶۷۸ (نمونه)</p></div>
     </div>
-    <div class="wrap footer-bottom">© ۱۴۰۵ آرتین‌تک — تمام حقوق محفوظ است.</div>
+    <div class="wrap footer-bottom">© ۱۴۰۵ آرتین‌تک</div>
   </footer>
 
-  <!-- MODAL -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modal-backdrop" id="modalBackdrop"></div>
     <div class="modal-card">
