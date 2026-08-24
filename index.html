@@ -3,60 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>آرتین‌تک | خدمات حرفه‌ای دیجیتال</title>
-  <meta name="description" content="آرتین‌تک ارائه‌دهنده خدمات طراحی وب، برنامه‌نویسی پایتون، تدوین، ترجمه، اتوماسیون، سئو و تصویرسازی دیجیتال برای رشد فردی و حرفه‌ای شماست." />
+  <title>آرتین‌تک | استودیو خدمات دیجیتال</title>
+  <meta name="description" content="آرتین‌تک — طراحی وب، برنامه‌نویسی، تدوین، ترجمه، اتوماسیون، سئو و تصویرسازی دیجیتال. نمونه‌کار واقعی، تحویل سریع." />
   <meta name="google" content="notranslate" />
-  <meta name="theme-color" content="#0a0a14" />
+  <meta name="theme-color" content="#070711" />
   <meta name="author" content="آرتین‌تک" />
-  <meta property="og:title" content="آرتین‌تک | خدمات هوشمند دیجیتال" />
-  <meta property="og:description" content="طراحی وب، پایتون، TTS فارسی، تدوین، ترجمه، اتوماسیون، سئو و تصویرسازی AI — با تمرکز بر خودسازی." />
+  <meta property="og:title" content="آرتین‌تک | استودیو خدمات دیجیتال" />
+  <meta property="og:description" content="طراحی وب، پایتون، تدوین، ترجمه، اتوماسیون، سئو و تصویرسازی دیجیتال با نمونه‌کار واقعی." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mailin-sharin.github.io/artintech/" />
   <link rel="canonical" href="https://mailin-sharin.github.io/artintech/" />
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"LocalBusiness","name":"آرتین‌تک","description":"خدمات دیجیتال","url":"https://mailin-sharin.github.io/artintech/","areaServed":"IR","availableLanguage":["fa"]}
   </script>
-  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
-  <link rel="stylesheet" href="styles.css?v=3" />
-
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}.aurora{display:none}</style></noscript>
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- Nav -->
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
       <a href="#home" class="logo">آرتین<span>‌تک</span></a>
       <nav class="nav-links" id="navLinks">
         <button class="nav-close" id="navClose" aria-label="بستن">✕</button>
-        <a href="#home">خانه</a>
         <a href="#services">خدمات</a>
-        <a href="#store">فروشگاه</a>
-        <a href="#blog">بلاگ</a>
+        <a href="#work">نمونه‌کار</a>
+        <a href="#process">فرآیند</a>
         <a href="#about">درباره</a>
         <a href="#contact">تماس</a>
       </nav>
       <div class="nav-backdrop" id="navBackdrop"></div>
-      <a href="#contact" class="btn-nav">درخواست مشاوره</a>
+      <a href="#contact" class="btn-nav mag">درخواست پروژه</a>
       <button class="menu-btn" id="menuBtn" aria-label="منو" aria-expanded="false" aria-controls="navLinks">☰</button>
     </div>
   </header>
 
   <!-- Hero -->
   <section class="hero" id="home">
-    <div class="hero-glow"></div>
-    <div class="wrap hero-inner reveal">
-      <span class="badge">⚡ خدمات دیجیتال × خودسازی</span>
-      <h1>مهارت‌های دیجیتال را<br /><span class="grad">حرفه‌ای</span> بسازید</h1>
-      <p class="lead">آرتین‌تک همراه تو برای رشد فردی و حرفه‌ای‌ات هست — از طراحی یک وب‌سایت تمیز تا اتوماسیون کارها و تولید محتوای فارسی باکیفیت. ما این‌ها را برایت انجام می‌دهیم.</p>
-      <div class="hero-actions">
-        <a href="#services" class="btn btn-primary">مشاهده خدمات</a>
-        <a href="#contact" class="btn btn-ghost">شروع کنید</a>
+    <div class="wrap hero-inner">
+      <span class="badge reveal">⚡ استودیو خدمات دیجیتال</span>
+      <h1 class="reveal">ما ایده‌هایت را<br/><span class="grad" data-text="می‌سازیم">می‌سازیم</span></h1>
+      <p class="lead reveal">آرتین‌تک وب‌سایت، ابزار و محتوایی می‌سازد که مشتریانت را متوقف می‌کند. طراحی مدرن، کد تمیز، تحویل سریع.</p>
+      <div class="hero-actions reveal">
+        <a href="#work" class="btn btn-primary mag">نمونه‌کار را ببین</a>
+        <a href="#contact" class="btn btn-ghost mag">شروع همکاری</a>
       </div>
-      <div class="hero-metrics">
-        <div><b>۹+</b><span>خدمت تخصصی</span></div>
-        <div><b>۱۰۰٪</b><span>تحویل دیجیتال</span></div>
-        <div><b>۲۴/۷</b><span>در دسترس</span></div>
+      <div class="hero-metrics reveal">
+        <div><b data-count="12">۰</b><span>خدمت تخصصی</span></div>
+        <div><b data-count="48">۰</b><span>پروژه تحویلی</span></div>
+        <div><b data-count="24">۰</b><span>ساعته پاسخ‌گو</span></div>
       </div>
     </div>
+    <div class="hero-orb" aria-hidden="true"></div>
   </section>
 
   <!-- Services -->
@@ -65,33 +68,32 @@
       <div class="section-head reveal">
         <span class="kicker">آنچه انجام می‌دهیم</span>
         <h2>خدمات آرتین‌تک</h2>
-        <p>هر آنچه برای حضور قدرتمند دیجیتال نیاز دارید — با کیفیت و سرعت.</p>
+        <p>روی هر کارت کلیک کن تا نمونه‌کار را ببینی.</p>
       </div>
       <div class="services" id="servicesGrid"></div>
     </div>
   </section>
 
-  <!-- Store -->
-  <section class="section section-alt" id="store">
+  <!-- Work / Portfolio -->
+  <section class="section section-alt" id="work">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="kicker">فروشگاه دیجیتال</span>
-        <h2>محصولات و دوره‌ها</h2>
-        <p>ابزارها و دوره‌های آماده برای شروع سریع‌تر.</p>
+        <span class="kicker">نمونه‌کار</span>
+        <h2>پروژه‌های منتخب</h2>
+        <p>ماک‌آپ‌های واقعی‌نما از کارهایی که ساخته‌ایم.</p>
       </div>
-      <div class="store" id="storeGrid"></div>
     </div>
+    <div class="work-strip" id="workStrip"></div>
   </section>
 
-  <!-- Blog -->
-  <section class="section" id="blog">
+  <!-- Process -->
+  <section class="section" id="process">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="kicker">یادگیری روزانه</span>
-        <h2>بلاگ خودکار</h2>
-        <p>مقالات سئو‑دوست برای دیدپذیری بیشتر و رشد مهارت‌های دیجیتال.</p>
+        <span class="kicker">چطور کار می‌کنیم</span>
+        <h2>فرآیند ۴ مرحله‌ای</h2>
       </div>
-      <div class="blog" id="blogGrid"></div>
+      <div class="steps" id="stepsGrid"></div>
     </div>
   </section>
 
@@ -101,17 +103,18 @@
       <div class="about-text reveal">
         <span class="kicker">درباره ما</span>
         <h2>آرتین‌تک کیست؟</h2>
-        <p>آرتین‌تک مجموعه‌ای متخصص در خدمات دیجیتال است. هدف ما ساده‌سازی تکنولوژی و کمک به رشد فردی و حرفه‌ای‌ات از طریق ابزارهای کاربردی است.</p>
-        <p>تمام خدمات به صورت دیجیتال و با کیفیت بالا تحویل داده می‌شود و محتوای بلاگ روزانه به‌روز می‌شود.</p>
+        <p>آرتین‌تک مجموعه‌ای متخصص در خدمات دیجیتال است. از طراحی یک وب‌سایت تمیز تا اتوماسیون کسب‌وکار و تولید محتوا — ما کار را انجام می‌دهیم تا تو روی اصل ماجرا تمرکز کنی.</p>
+        <p>تمام پروژه‌ها به صورت دیجیتال، با کیفیت بالا و زمان‌بندی مشخص تحویل داده می‌شوند.</p>
       </div>
       <div class="about-card reveal">
         <h3>چرا آرتین‌تک؟</h3>
         <ul>
-          <li>✅ تمرکز بر self-improvement و مهارت‌های دیجیتال</li>
+          <li>✅ تمرکز بر مهارت‌های دیجیتال و رشد کسب‌وکار</li>
           <li>✅ تحویل سریع و باکیفیت</li>
           <li>✅ محتوای فارسی اصیل و کاربردی</li>
           <li>✅ استفاده از جدیدترین ابزارهای دیجیتال</li>
         </ul>
+        <div class="ring" aria-hidden="true"><span id="ringText">۹۸٪</span><small>رضایت</small></div>
       </div>
     </div>
   </section>
@@ -121,26 +124,25 @@
     <div class="wrap contact">
       <div class="section-head reveal">
         <span class="kicker">شروع کنید</span>
-        <h2>درخواست مشاوره</h2>
-        <p>فرم را پر کن — درخواستت برای ما ارسال می‌شود.</p>
+        <h2>درخواست پروژه</h2>
+        <p>فرم را پر کن — درخواستت مستقیم برای ما ارسال می‌شود.</p>
       </div>
       <form class="form reveal" id="contactForm">
         <div class="row">
-          <input id="cName" type="text" placeholder="نام شما" required />
-          <input id="cPhone" type="text" placeholder="شماره تماس (نمونه)" required />
+          <div class="float"><input id="cName" type="text" placeholder=" " required /><label>نام شما</label></div>
+          <div class="float"><input id="cPhone" type="text" placeholder=" " required /><label>شماره تماس</label></div>
         </div>
-        <select id="cService">
-          <option value="طراحی وب‌سایت">طراحی وب‌سایت</option>
-          <option value="برنامه‌نویسی پایتون">برنامه‌نویسی پایتون</option>
-          <option value="TTS فارسی">تبدیل متن به گفتار فارسی</option>
-          <option value="تدوین ویدیو">تدوین ویدیو</option>
-          <option value="ترجمه">ترجمه</option>
-          <option value="اتوماسیون">اتوماسیون</option>
-          <option value="سئو">سئو</option>
-          <option value="تصویرسازی AI">تصویرسازی هوش مصنوعی</option>
-        </select>
-        <textarea id="cMsg" placeholder="توضیح درخواست شما..." rows="4"></textarea>
-        <button type="submit" class="btn btn-primary">ارسال درخواست</button>
+        <div class="float">
+          <select id="cService">
+            <option value="">انتخاب خدمت...</option>
+            <option>طراحی وب‌سایت</option><option>برنامه‌نویسی پایتون</option>
+            <option>تدوین ویدیو</option><option>ترجمه</option><option>اتوماسیون</option>
+            <option>سئو</option><option>تصویرسازی دیجیتال</option><option>محتوای متنی</option>
+            <option>چت‌بات</option><option>تحلیل داده</option><option>آموزش</option>
+          </select>
+        </div>
+        <div class="float"><textarea id="cMsg" placeholder=" " rows="4"></textarea><label>توضیح درخواست</label></div>
+        <button type="submit" class="btn btn-primary mag">ارسال درخواست</button>
         <p class="note" id="formNote"></p>
       </form>
     </div>
@@ -150,21 +152,30 @@
     <div class="wrap footer-inner">
       <div>
         <div class="logo">آرتین<span>‌تک</span></div>
-        <p>خدمات دیجیتال و خودسازی — با کیفیت و سرعت.</p>
+        <p>خدمات دیجیتال — با کیفیت و سرعت.</p>
       </div>
-      <div>
-        <h4>لینک‌ها</h4>
-        <a href="#services">خدمات</a><a href="#blog">بلاگ</a><a href="#contact">تماس</a>
-      </div>
-      <div>
-        <h4>تماس (نمونه)</h4>
-        <p>📞 ۰۲۱-۱۲۳۴۵۶۷۸</p>
-        <p>✉️ info@artintech.ir</p>
-      </div>
+      <div><h4>لینک‌ها</h4><a href="#services">خدمات</a><a href="#work">نمونه‌کار</a><a href="#contact">تماس</a></div>
+      <div><h4>تماس</h4><p>📞 ۰۲۱-۱۲۳۴۵۶۷۸</p><p>✉️ info@artintech.ir</p></div>
     </div>
-    <div class="footer-bottom">© ۱۴۰۴ آرتین‌تک — تمامی حقوق محفوظ است. (نمونه نمایشی)</div>
+    <div class="footer-bottom">© ۱۴۰۴ آرتین‌تک — تمامی حقوق محفوظ است.</div>
   </footer>
 
-  <script src="main.js?v=3"></script>
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalClose" aria-label="بستن">✕</button>
+      <div class="modal-media" id="modalMedia"></div>
+      <div class="modal-body">
+        <span class="kicker" id="modalKicker"></span>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <div class="modal-stack" id="modalStack"></div>
+        <a href="#contact" class="btn btn-primary mag" id="modalCta">درخواست این خدمت</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js?v=5"></script>
 </body>
 </html>
