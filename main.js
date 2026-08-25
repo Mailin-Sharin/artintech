@@ -22,16 +22,12 @@ function loop(){
 loop();
 
 /* ---- interactive hero widget ---- */
-const SERVICE_TABS=[
-  {id:'web',t:'طراحی وب',bars:[['سرعت',92],['سئو',88],['ریسپانسیو',95]]},
-  {id:'python',t:'پایتون',bars:[['اتوماسیون',90],['بک‌اند',85],['دیتا',82]]},
-  {id:'ai',t:'تصویرسازی',bars:[['کیفیت',94],['سرعت',78],['خلاقیت',96]]},
-  {id:'seo',t:'سئو',bars:[['رتبه',89],['ترافیک',84],['سرعت',91]]},
-  {id:'data',t:'تحلیل داده',bars:[['دقت',93],['گزارش',87],['داشبورد',90]]},
-  {id:'video',t:'تدوین',bars:[['کیفیت',91],['موشن',86],['زیرنویس',88]]}
-];
-function buildHeroWidget(){
+let SERVICE_TABS=[];
+async function buildHeroWidget(){
+  const s=await loadJSON('settings.json'); if(!s)return;
+  SERVICE_TABS=s.services.slice(0,6).map(sv=>({id:sv.id,t:sv.t,bars:[[(sv.stack&&sv.stack[0]?sv.stack[0]:'تخصص'),90],[(sv.stack&&sv.stack[1]?sv.stack[1]:'کیفیت'),85],[(sv.stack&&sv.stack[2]?sv.stack[2]:'سرعت'),88]]}));
   const tabs=document.getElementById('hwTabs'),stage=document.getElementById('hwStage');
+  tabs.innerHTML='';stage.innerHTML='';
   SERVICE_TABS.forEach((s,i)=>{
     const b=document.createElement('button');b.className='hw-tab'+(i===0?' active':'');b.textContent=s.t;b.dataset.id=s.id;
     b.onclick=()=>{document.querySelectorAll('.hw-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');showPane(s.id);};
