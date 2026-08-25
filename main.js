@@ -22,28 +22,29 @@ function loop(){
 loop();
 
 /* ---- interactive hero widget ---- */
-let SERVICE_TABS=[];
-async function buildHeroWidget(){
-  const s=await loadJSON('settings.json'); if(!s)return;
-  SERVICE_TABS=s.services.filter(sv=>['web','python','ai','data'].includes(sv.id)).map(sv=>({id:sv.id,t:sv.t,bars:[[(sv.stack&&sv.stack[0]?sv.stack[0]:'تخصص'),90],[(sv.stack&&sv.stack[1]?sv.stack[1]:'کیفیت'),85],[(sv.stack&&sv.stack[2]?sv.stack[2]:'سرعت'),88]]}));
-  const tabs=document.getElementById('hwTabs'),stage=document.getElementById('hwStage');
-  tabs.innerHTML='';stage.innerHTML='';
-  SERVICE_TABS.forEach((s,i)=>{
-    const b=document.createElement('button');b.className='hw-tab'+(i===0?' active':'');b.textContent=s.t;b.dataset.id=s.id;
-    b.onclick=()=>{document.querySelectorAll('.hw-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');showPane(s.id);};
-    tabs.appendChild(b);
-    const pane=document.createElement('div');pane.className='hw-pane'+(i===0?' active':'');pane.id='pane-'+s.id;
-    pane.innerHTML=`<h3>${s.t}</h3><p>نمونه کار و تخصص ما در این خدمت — تب را عوض کنید تا جزئیات به‌روز شود.</p><div class="hw-bars">${s.bars.map(x=>`<div class="hw-bar"><label>${x[0]}</label><div class="track"><div class="fill" data-w="${x[1]}"></div></div></div>`).join('')}</div><div class="hw-mini"><div><b>۹۸٪</b><span>رضایت مشتری</span></div><div><b>${s.bars[0][1]}٪</b><span>تخصص ${s.bars[0][0]}</span></div></div>`;
-    stage.appendChild(pane);
+/* ---- hero portfolio carousel ---- */
+let hcIndex=0, hcItems=[];
+async function buildHeroCarousel(){
+  const s=await loadJSON('settings.json'); if(!s||!s.work)return;
+  const track=document.getElementById('hcTrack'),dots=document.getElementById('hcDots');
+  hcItems=s.work.map(w=>({t:w.t,cat:w.cat,kind:w.kind}));
+  hcItems.forEach((it,i)=>{
+    const slide=document.createElement('div');slide.className='hc-slide';
+    slide.innerHTML=`<div class="mock">${mockSVG(it.kind)}</div><span class="cat">${it.cat}</span><h3>${it.t}</h3><p>نمونه‌ای واقعی از پروژه‌های تحویل‌شده آرتین‌تک در این حوزه.</p>`;
+    track.appendChild(slide);
+    const d=document.createElement('span');if(i===0)d.className='active';d.onclick=()=>goSlide(i);dots.appendChild(d);
   });
-  setTimeout(()=>{document.querySelectorAll('.hw-pane .fill').forEach(f=>f.style.width=f.dataset.w+'%');},400);
+  document.getElementById('hcPrev').onclick=()=>goSlide(hcIndex-1);
+  document.getElementById('hcNext').onclick=()=>goSlide(hcIndex+1);
+  updateHero();
 }
-function showPane(id){
-  document.querySelectorAll('.hw-pane').forEach(p=>p.classList.remove('active'));
-  const pane=document.getElementById('pane-'+id);if(!pane)return;pane.classList.add('active');
-  pane.querySelectorAll('.fill').forEach(f=>{f.style.width='0';setTimeout(()=>f.style.width=f.dataset.w+'%',60);});
+function goSlide(i){hcIndex=(i+hcItems.length)%hcItems.length;updateHero();}
+function updateHero(){
+  document.getElementById('hcTrack').style.transform='translateX('+(-hcIndex*100)+'%)';
+  document.querySelectorAll('#hcDots span').forEach((d,i)=>d.classList.toggle('active',i===hcIndex));
 }
-if(document.getElementById('hwTabs'))buildHeroWidget();
+if(document.getElementById('hcTrack'))buildHeroCarousel();
+setInterval(()=>{if(hcItems.length&&document.getElementById('hcTrack'))goSlide(hcIndex+1);},5000);
 
 /* ---- magnetic + tilt ---- */
 document.querySelectorAll('.mag').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();var x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.transform='translate('+(x*0.25)+'px,'+(y*0.35)+'px)';});b.addEventListener('mouseleave',function(){b.style.transform='';});});

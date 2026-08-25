@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=27" />
-  <script src="main.js?v=27" defer></script>
+  <link rel="stylesheet" href="styles.css?v=28" />
+  <script src="main.js?v=28" defer></script>
 </head>
 <body>
   <canvas id="bg"></canvas>
@@ -40,7 +40,7 @@
     <div class="wrap hero-grid">
       <div class="hero-pitch reveal">
         <h1>سایتی که<br/><span class="grad">مشتریانت</span> را می‌فروشد</h1>
-        <p class="lead">آرتین‌تک سایت، ابزار و محتوایی می‌سازد که بازدیدکننده را به مشتری تبدیل می‌کند. خدمتت را انتخاب کن — نمونه‌اش را همین‌جا ببین.</p>
+        <p class="lead">آرتین‌تک سایت، ابزار و محتوایی می‌سازد که بازدیدکننده را به مشتری تبدیل می‌کند. نمونه‌کارهای واقعی ما را ببین.</p>
         <div class="hero-actions">
           <a href="#work" class="btn btn-primary mag">نمونه‌کار</a>
           <a href="#contact" class="btn btn-ghost mag">شروع همکاری</a>
@@ -52,9 +52,13 @@
         </div>
       </div>
 
-      <div class="hero-widget reveal" id="heroWidget">
-        <div class="hw-tabs" id="hwTabs"></div>
-        <div class="hw-stage" id="hwStage"></div>
+      <div class="hero-showcase reveal" id="heroShowcase">
+        <div class="hc-track" id="hcTrack"></div>
+        <div class="hc-nav">
+          <button class="hc-prev" id="hcPrev" aria-label="قبلی">‹</button>
+          <div class="hc-dots" id="hcDots"></div>
+          <button class="hc-next" id="hcNext" aria-label="بعدی">›</button>
+        </div>
       </div>
     </div>
     <div class="hero-orb"></div>
