@@ -37,10 +37,10 @@ function buildHeroWidget(){
     b.onclick=()=>{document.querySelectorAll('.hw-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');showPane(s.id);};
     tabs.appendChild(b);
     const pane=document.createElement('div');pane.className='hw-pane'+(i===0?' active':'');pane.id='pane-'+s.id;
-    pane.innerHTML=`<h3>${s.t}</h3><p>پیش‌نمایش زنده توانمندی ما در این خدمت:</p><div class="hw-bars">${s.bars.map(x=>`<div class="hw-bar"><label>${x[0]}</label><div class="track"><div class="fill" data-w="${x[1]}"></div></div></div>`).join('')}</div><div class="hw-mini"><div><b>${s.bars[0][1]}٪</b><span>${s.bars[0][0]}</span></div><div><b>${s.bars.length}+</b><span>مورد</span></div></div>`;
+    pane.innerHTML=`<h3>${s.t}</h3><p>پیش‌نمایش زنده توانمندی ما در این خدمت — هر بار که تب را عوض کنید، نمودار به‌روز می‌شود.</p><div class="hw-bars">${s.bars.map(x=>`<div class="hw-bar"><label>${x[0]}</label><div class="track"><div class="fill" data-w="${x[1]}"></div></div></div>`).join('')}</div><div class="hw-mini"><div><b>${s.bars[0][1]}٪</b><span>${s.bars[0][0]} برتر</span></div><div><b>${s.bars.length} مهارت</b><span>تخصص ما</span></div></div>`;
     stage.appendChild(pane);
   });
-  setTimeout(()=>{const f=document.querySelector('.hw-pane.active .fill');if(f)f.style.width=f.dataset.w+'%';},400);
+  setTimeout(()=>{document.querySelectorAll('.hw-pane .fill').forEach(f=>f.style.width=f.dataset.w+'%');},400);
 }
 function showPane(id){
   document.querySelectorAll('.hw-pane').forEach(p=>p.classList.remove('active'));
