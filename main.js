@@ -25,7 +25,7 @@ loop();
 let SERVICE_TABS=[];
 async function buildHeroWidget(){
   const s=await loadJSON('settings.json'); if(!s)return;
-  SERVICE_TABS=s.services.slice(0,6).map(sv=>({id:sv.id,t:sv.t,bars:[[(sv.stack&&sv.stack[0]?sv.stack[0]:'تخصص'),90],[(sv.stack&&sv.stack[1]?sv.stack[1]:'کیفیت'),85],[(sv.stack&&sv.stack[2]?sv.stack[2]:'سرعت'),88]]}));
+  SERVICE_TABS=s.services.filter(sv=>['web','python','ai','data'].includes(sv.id)).map(sv=>({id:sv.id,t:sv.t.replace('‌سایت','').replace('برنامه‌نویسی ','').replace('تصویرسازی دیجیتال','تصویرسازی').replace('تحلیل داده و گزارش','تحلیل داده'),bars:[[(sv.stack&&sv.stack[0]?sv.stack[0]:'تخصص'),90],[(sv.stack&&sv.stack[1]?sv.stack[1]:'کیفیت'),85],[(sv.stack&&sv.stack[2]?sv.stack[2]:'سرعت'),88]]}));
   const tabs=document.getElementById('hwTabs'),stage=document.getElementById('hwStage');
   tabs.innerHTML='';stage.innerHTML='';
   SERVICE_TABS.forEach((s,i)=>{
@@ -33,7 +33,7 @@ async function buildHeroWidget(){
     b.onclick=()=>{document.querySelectorAll('.hw-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');showPane(s.id);};
     tabs.appendChild(b);
     const pane=document.createElement('div');pane.className='hw-pane'+(i===0?' active':'');pane.id='pane-'+s.id;
-    pane.innerHTML=`<h3>${s.t}</h3><p>پیش‌نمایش زنده توانمندی ما در این خدمت — هر بار که تب را عوض کنید، نمودار به‌روز می‌شود.</p><div class="hw-bars">${s.bars.map(x=>`<div class="hw-bar"><label>${x[0]}</label><div class="track"><div class="fill" data-w="${x[1]}"></div></div></div>`).join('')}</div><div class="hw-mini"><div><b>${s.bars[0][1]}٪</b><span>${s.bars[0][0]} برتر</span></div><div><b>${s.bars.length} مهارت</b><span>تخصص ما</span></div></div>`;
+    pane.innerHTML=`<h3>${s.t}</h3><p>پیش‌نمایش زنده توانمندی ما در این خدمت — هر بار که تب را عوض کنید، نمودار به‌روز می‌شود.</p><div class="hw-bars">${s.bars.map(x=>`<div class="hw-bar"><label>${x[0]}</label><div class="track"><div class="fill" data-w="${x[1]}"></div></div></div>`).join('')}</div><div class="hw-mini"><div><b>۹۸٪</b><span>رضایت مشتری</span></div><div><b>${s.bars[0][1]}٪</b><span>${s.bars[0][0]} برتر</span></div></div>`;
     stage.appendChild(pane);
   });
   setTimeout(()=>{document.querySelectorAll('.hw-pane .fill').forEach(f=>f.style.width=f.dataset.w+'%');},400);
