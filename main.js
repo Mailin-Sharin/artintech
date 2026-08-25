@@ -1,11 +1,11 @@
-/* ===== ArtinTech — interactive node-web hero + content ===== */
+/* ===== ArtinTech — interactive hero widget + starfield bg + content ===== */
 document.body.classList.add('js-ready');
 const DATA_BASE='data/';
 const _cache={};
 async function loadJSON(f){if(_cache[f])return _cache[f];try{const r=await fetch(DATA_BASE+f);if(!r.ok){showDataError();return null;}const j=await r.json();_cache[f]=j;return j;}catch(e){showDataError();return null;}}
 function showDataError(){document.querySelectorAll('#servicesGrid,#workStrip,#storeGrid,#trainingGrid,#stepsGrid').forEach(g=>{if(g&&g.children.length===0)g.innerHTML='<p style="color:var(--muted);grid-column:1/-1">⚠️ سایت باید روی سرور باز شود.</p>';});}
 
-/* ---- canvas: node-web background + mouse connect ---- */
+/* ---- canvas: starfield + mouse connect ---- */
 const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
 let W,H,nodes,mx=-999,my=-999;
 function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;const n=Math.min(130,Math.floor(W*H/14000));nodes=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.8+0.6}));}
@@ -21,7 +21,7 @@ function loop(){
 }
 loop();
 
-/* ---- interactive node-web widget in hero ---- */
+/* ---- interactive hero widget ---- */
 const SERVICE_TABS=[
   {id:'web',t:'طراحی وب',bars:[['سرعت',92],['سئو',88],['ریسپانسیو',95]]},
   {id:'python',t:'پایتون',bars:[['اتوماسیون',90],['بک‌اند',85],['دیتا',82]]},
@@ -40,7 +40,7 @@ function buildHeroWidget(){
     pane.innerHTML=`<h3>${s.t}</h3><p>پیش‌نمایش زنده توانمندی ما در این خدمت:</p><div class="hw-bars">${s.bars.map(x=>`<div class="hw-bar"><label>${x[0]}</label><div class="track"><div class="fill" data-w="${x[1]}"></div></div></div>`).join('')}</div><div class="hw-mini"><div><b>${s.bars[0][1]}٪</b><span>${s.bars[0][0]}</span></div><div><b>${s.bars.length}+</b><span>مورد</span></div></div>`;
     stage.appendChild(pane);
   });
-  setTimeout(()=>{document.querySelectorAll('.hw-pane.active .fill').forEach(f=>f.style.width=f.dataset.w+'%');},400);
+  setTimeout(()=>{const f=document.querySelector('.hw-pane.active .fill');if(f)f.style.width=f.dataset.w+'%';},400);
 }
 function showPane(id){
   document.querySelectorAll('.hw-pane').forEach(p=>p.classList.remove('active'));
