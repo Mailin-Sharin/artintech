@@ -25,7 +25,7 @@ loop();
 let SERVICE_TABS=[];
 async function buildHeroWidget(){
   const s=await loadJSON('settings.json'); if(!s)return;
-  SERVICE_TABS=s.services.filter(sv=>['web','python','ai','data'].includes(sv.id)).map(sv=>({id:sv.id,t:sv.t.replace('‌سایت','').replace('برنامه‌نویسی ','').replace('تصویرسازی دیجیتال','تصویرسازی').replace('تحلیل داده و گزارش','تحلیل داده'),bars:[[(sv.stack&&sv.stack[0]?sv.stack[0]:'تخصص'),90],[(sv.stack&&sv.stack[1]?sv.stack[1]:'کیفیت'),85],[(sv.stack&&sv.stack[2]?sv.stack[2]:'سرعت'),88]]}));
+  SERVICE_TABS=s.services.filter(sv=>['web','python','ai','data'].includes(sv.id)).map(sv=>({id:sv.id,t:sv.t,bars:[[(sv.stack&&sv.stack[0]?sv.stack[0]:'تخصص'),90],[(sv.stack&&sv.stack[1]?sv.stack[1]:'کیفیت'),85],[(sv.stack&&sv.stack[2]?sv.stack[2]:'سرعت'),88]]}));
   const tabs=document.getElementById('hwTabs'),stage=document.getElementById('hwStage');
   tabs.innerHTML='';stage.innerHTML='';
   SERVICE_TABS.forEach((s,i)=>{
