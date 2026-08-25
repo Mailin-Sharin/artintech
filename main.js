@@ -33,7 +33,7 @@ async function buildHeroWidget(){
     b.onclick=()=>{document.querySelectorAll('.hw-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');showPane(s.id);};
     tabs.appendChild(b);
     const pane=document.createElement('div');pane.className='hw-pane'+(i===0?' active':'');pane.id='pane-'+s.id;
-    pane.innerHTML=`<h3>${s.t}</h3><p>پیش‌نمایش زنده توانمندی ما در این خدمت — هر بار که تب را عوض کنید، نمودار به‌روز می‌شود.</p><div class="hw-bars">${s.bars.map(x=>`<div class="hw-bar"><label>${x[0]}</label><div class="track"><div class="fill" data-w="${x[1]}"></div></div></div>`).join('')}</div><div class="hw-mini"><div><b>۹۸٪</b><span>رضایت مشتری</span></div><div><b>${s.bars[0][1]}٪</b><span>${s.bars[0][0]} برتر</span></div></div>`;
+    pane.innerHTML=`<h3>${s.t}</h3><p>نمونه کار و تخصص ما در این خدمت — تب را عوض کنید تا جزئیات به‌روز شود.</p><div class="hw-bars">${s.bars.map(x=>`<div class="hw-bar"><label>${x[0]}</label><div class="track"><div class="fill" data-w="${x[1]}"></div></div></div>`).join('')}</div><div class="hw-mini"><div><b>۹۸٪</b><span>رضایت مشتری</span></div><div><b>${s.bars[0][1]}٪</b><span>تخصص ${s.bars[0][0]}</span></div></div>`;
     stage.appendChild(pane);
   });
   setTimeout(()=>{document.querySelectorAll('.hw-pane .fill').forEach(f=>f.style.width=f.dataset.w+'%');},400);
