@@ -32,18 +32,18 @@ a{color:inherit;text-decoration:none}
 .btn-ghost:hover{border-color:var(--v2);transform:translateY(-2px)}
 
 /* HERO split */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 60px;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;position:relative;z-index:3}
-.badge{display:inline-block;background:var(--surface2);border:1px solid var(--border);color:var(--v2);padding:7px 16px;border-radius:999px;font-size:13px;margin-bottom:22px}
-.hero-pitch h1{font-size:clamp(38px,6vw,68px);line-height:1.08;font-weight:900;margin-bottom:22px;letter-spacing:-1px;color:#ffffff;text-shadow:0 2px 30px rgba(124,92,255,.4)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:100px 0 40px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;z-index:3}
+.badge{display:inline-block;background:var(--surface2);border:1px solid var(--border);color:var(--v2);padding:6px 14px;border-radius:999px;font-size:12px;margin-bottom:16px}
+.hero-pitch h1{font-size:clamp(32px,5vw,56px);line-height:1.1;font-weight:900;margin-bottom:16px;letter-spacing:-1px;color:#eef0fb;text-shadow:0 2px 24px rgba(124,92,255,.25)}
 .hero-pitch h1 .grad{background:linear-gradient(120deg,var(--v3),var(--v1),var(--v2));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:hue 5s linear infinite}
 @keyframes hue{to{background-position:200% center}}
-.lead{color:var(--muted);font-size:18px;max-width:520px;margin-bottom:32px}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:50px}
-.hero-metrics{display:flex;gap:40px;flex-wrap:wrap}
+.lead{color:#aab0c8;font-size:16px;max-width:500px;margin-bottom:24px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.hero-metrics{display:flex;gap:32px;flex-wrap:wrap}
 .hero-metrics div{display:flex;flex-direction:column}
-.hero-metrics b{font-size:clamp(30px,5vw,42px);font-weight:900;background:linear-gradient(120deg,var(--v3),var(--v1));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-metrics span{color:var(--muted);font-size:13px}
+.hero-metrics b{font-size:clamp(26px,4vw,36px);font-weight:900;background:linear-gradient(120deg,var(--v3),var(--v1));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-metrics span{color:#aab0c8;font-size:12px}
 .hero-orb{position:absolute;top:8%;left:52%;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,var(--v1),transparent 70%);filter:blur(60px);z-index:1;animation:spin 22s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
