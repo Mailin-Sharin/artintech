@@ -3,7 +3,7 @@ document.body.classList.add('js-ready');
 const DATA_BASE='data/';
 const _cache={};
 async function loadJSON(f){if(_cache[f])return _cache[f];try{const r=await fetch(DATA_BASE+f);if(!r.ok){showDataError();return null;}const j=await r.json();_cache[f]=j;return j;}catch(e){showDataError();return null;}}
-function showDataError(){document.querySelectorAll('#servicesGrid,#workStrip,#storeGrid,#trainingGrid,#stepsGrid').forEach(g=>{if(g&&g.children.length===0)g.innerHTML='<p style="color:var(--muted);grid-column:1/-1">⚠️ سایت باید روی سرور باز شود.</p>';});}
+function showDataError(){document.querySelectorAll('#servicesGrid,#workStrip,#storeGrid,#trainingGrid,#stepsGrid').forEach(g=>{if(g&&g.children.length===0)g.innerHTML='<p style="color:var(--muted);grid-column:1/-1">سایت باید روی سرور باز شود.</p>';});}
 
 /* ---- canvas: starfield + mouse connect ---- */
 const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
@@ -94,7 +94,7 @@ function mockSVG(kind){const f='#0a0a16',c='#7c5cff',c2='#22d3ee',m='#9aa3c0';
 function sample(id){const map={web:mockSVG('land'),python:mockSVG('dash'),video:mockSVG('app'),translate:mockSVG('land'),automation:mockSVG('dash'),seo:mockSVG('dash'),ai:mockSVG('shop'),content:mockSVG('land'),chatbot:mockSVG('app'),data:mockSVG('dash'),selfdev:mockSVG('land'),training:mockSVG('shop')};document.getElementById('modalMedia').innerHTML=map[id]||mockSVG('land');}
 
 const form=document.getElementById('contactForm');
-if(form)form.addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('cName').value.trim(),phone=document.getElementById('cPhone').value.trim(),service=document.getElementById('cService').value,msg=document.getElementById('cMsg').value.trim();window.location.href='mailto:info@artintech.ir?subject='+encodeURIComponent('درخواست از آرتین‌تک - '+name)+'&body='+encodeURIComponent(`نام: ${name}\nتلفن: ${phone}\nخدمت: ${service}\nپیام: ${msg}`);document.getElementById('formNote').textContent='درخواست آماده ارسال شد ✅';if(navigator.clipboard)navigator.clipboard.writeText(`نام: ${name} | ${service}`).catch(()=>{});e.target.reset();});
+if(form)form.addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('cName').value.trim(),phone=document.getElementById('cPhone').value.trim(),service=document.getElementById('cService').value,msg=document.getElementById('cMsg').value.trim();window.location.href='mailto:info@artintech.ir?subject='+encodeURIComponent('درخواست از آرتین‌تک - '+name)+'&body='+encodeURIComponent(`نام: ${name}\nتلفن: ${phone}\nخدمت: ${service}\nپیام: ${msg}`);document.getElementById('formNote').textContent='درخواست آماده ارسال شد';if(navigator.clipboard)navigator.clipboard.writeText(`نام: ${name} | ${service}`).catch(()=>{});e.target.reset();});
 
 renderServices();renderWork();renderStore();renderTraining();renderSteps();
 setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),1300);

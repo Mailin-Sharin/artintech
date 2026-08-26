@@ -17,8 +17,10 @@ const { chromium } = require('playwright');
       document.querySelectorAll('*').forEach(el => {
         const r = el.getBoundingClientRect();
         const cs = getComputedStyle(el);
-        // ignore fixed elements (nav drawer, cursor glow) that are intentionally off-screen
         if (cs.position === 'fixed') return;
+        // skip elements inside a closed off-screen nav drawer
+        let p = el;
+        while (p) { if (p.id === 'navLinks' && !p.classList.contains('open')) return; p = p.parentElement; }
         if (r.right > cw + 1 && r.width > 0) {
           out.push({
             cls: el.className && el.className.toString().slice(0, 40),
