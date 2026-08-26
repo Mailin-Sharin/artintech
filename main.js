@@ -12,6 +12,7 @@ function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;const n=
 resize();addEventListener('resize',resize);
 addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;const g=document.querySelector('.cursor-glow');g.style.left=mx+'px';g.style.top=my+'px';});
 function loop(){
+  if(!ctx)return;
   ctx.clearRect(0,0,W,H);
   for(const p of nodes){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
     const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);

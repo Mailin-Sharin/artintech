@@ -15,7 +15,7 @@ const fs = require('fs');
   const consoleErrors = [];
   page.on('console', m => { if (m.type()==='error') consoleErrors.push(m.text()); });
   page.on('pageerror', e => consoleErrors.push('PAGEERR: '+e.message));
-  await page.goto('https://mailin-sharin.github.io/artintech/?v=38', { waitUntil: 'networkidle' });
+  await page.goto('https://mailin-sharin.github.io/artintech/?v=39', { waitUntil: 'networkidle' });
   await page.waitForTimeout(2500);
 
   // ===== 3. RENDER CHECK (all sections populated) =====
@@ -94,7 +94,7 @@ const fs = require('fs');
   });
   log(a11y.emptyInteractive===0?'pass':'warn', `empty interactive elements: ${a11y.emptyInteractive}`);
 
-  // ===== 7. CONSOLE ERRORS =====
+  // ===== 7. CONSOLE ERRORS (collected during whole run) =====
   log(consoleErrors.length===0?'pass':'fail', `console errors: ${consoleErrors.length? consoleErrors.slice(0,3).join(' | ') : 'none'}`);
 
   // ===== SUMMARY =====
