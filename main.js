@@ -42,6 +42,7 @@ async function buildHeroCarousel(){
   document.getElementById('hcPrev').onclick=()=>goSlide(hcIndex-1);
   document.getElementById('hcNext').onclick=()=>goSlide(hcIndex+1);
   updateHero();
+  setInterval(()=>{if(hcItems.length)goSlide(hcIndex+1);},5000);
 }
 function goSlide(i){hcIndex=(i+hcItems.length)%hcItems.length;updateHero();}
 function updateHero(){
@@ -49,7 +50,7 @@ function updateHero(){
   document.querySelectorAll('#hcDots span').forEach((d,i)=>d.classList.toggle('active',i===hcIndex));
 }
 if(document.getElementById('hcTrack'))buildHeroCarousel();
-setInterval(()=>{if(hcItems.length&&document.getElementById('hcTrack'))goSlide(hcIndex+1);},5000);
+
 
 /* ---- magnetic + tilt ---- */
 document.querySelectorAll('.mag').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();var x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.transform='translate('+(x*0.25)+'px,'+(y*0.35)+'px)';});b.addEventListener('mouseleave',function(){b.style.transform='';});});

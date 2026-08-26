@@ -8,6 +8,7 @@
     "steps rendered: 4/4",
     "carousel slides: 4/4",
     "studio text removed: true",
+    "no emoji in content: true",
     "service card opens modal: true",
     "mobile menu opens: true",
     "iPhone12 (390px) overflow: CLEAN",
@@ -18,7 +19,6 @@
     "empty interactive elements: 0"
   ],
   "fail": [
-    "no emoji in content: false",
     "carousel navigates:  -> ",
     "console errors: PAGEERR: Cannot read properties of null (reading 'style') | PAGEERR: Cannot read properties of null (reading 'style') | PAGEERR: Cannot read properties of null (reading 'style')"
   ],
