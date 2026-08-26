@@ -14,9 +14,14 @@ addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;const g=document.quer
 function loop(){
   ctx.clearRect(0,0,W,H);
   for(const p of nodes){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
-    const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);if(d<170){p.x+=dx/d*.8;p.y+=dy/d*.8;}
-    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fillStyle='rgba(170,180,230,.65)';ctx.fill();}
-  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<90){ctx.strokeStyle='rgba(124,92,255,'+(1-d/90)*.14+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+    const dx=p.x-mx,dy=p.y-my,d=Math.hypot(dx,dy);
+    let glow=0;
+    if(d<200){p.x+=dx/d*1.4;p.y+=dy/d*1.4;glow=(200-d)/200;}
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r+(glow*1.6),0,7);
+    ctx.fillStyle='rgba('+(170+glow*60)+','+(185+glow*40)+',255,'+(.55+glow*.4)+')';ctx.fill();
+    if(d<200){ctx.strokeStyle='rgba(124,92,255,'+(glow*.5)+')';ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(mx,my);ctx.stroke();}
+  }
+  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const a=nodes[i],b=nodes[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<100){ctx.strokeStyle='rgba(124,92,255,'+(1-d/100)*.22+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
   requestAnimationFrame(loop);
 }
 loop();
@@ -70,7 +75,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('scrollProgress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
 
 const ICONS={web:"وب",python:"PY",video:"وی",translate:"تر",automation:"ات",seo:"سئو",ai:"گر",content:"مت",chatbot:"بات",data:"داده",selfdev:"خود",training:"آم"};
-async function renderServices(){const s=await loadJSON('settings.json');if(!s)return;const w=document.getElementById('servicesGrid');s.services.forEach(sv=>{const el=document.createElement('article');el.className='service reveal';const ic=ICONS[sv.id]||'★';el.innerHTML=`<div class="ic">${ic}</div><h3>${sv.t}</h3><p>${sv.d}</p><div class="more">مشاهده نمونه‌کار ←</div>`;bindTilt(el);el.addEventListener('click',()=>openModal(sv));w.appendChild(el);io.observe(el);});}
+async function renderServices(){const s=await loadJSON('settings.json');if(!s)return;const w=document.getElementById('servicesGrid');s.services.forEach(sv=>{const el=document.createElement('article');el.className='service reveal';const ic=sv.ic||'★';el.innerHTML=`<div class="ic">${ic}</div><h3>${sv.t}</h3><p>${sv.d}</p><div class="more">مشاهده نمونه‌کار ←</div>`;bindTilt(el);el.addEventListener('click',()=>openModal(sv));w.appendChild(el);io.observe(el);});}
 async function renderWork(){const s=await loadJSON('settings.json');if(!s)return;const w=document.getElementById('workStrip');(s.work||[]).forEach(it=>{const el=document.createElement('article');el.className='work reveal';el.innerHTML=`<div class="mock">${mockSVG(it.kind)}</div><div class="cap"><h4>${it.t}</h4><span>${it.cat}</span></div>`;w.appendChild(el);io.observe(el);});}
 async function renderStore(){const s=await loadJSON('settings.json');if(!s||!s.store||!s.store.enabled)return;const w=document.getElementById('storeGrid');(s.store.items||[]).forEach(it=>{const el=document.createElement('article');el.className='product reveal';el.innerHTML=`<span class="cat">${it.cat}</span><h3>${it.name}</h3><p>${it.desc}</p><div class="price">${it.price}</div><a href="#contact" class="btn btn-primary mag">درخواست / خرید</a>`;w.appendChild(el);io.observe(el);});}
 async function renderTraining(){const s=await loadJSON('settings.json');if(!s)return;const w=document.getElementById('trainingGrid');(s.training||[]).forEach(c=>{const el=document.createElement('article');el.className='course reveal';const priceHtml=c.free?'<span class="price free">رایگان</span>':`<span class="price">${c.price}</span>`;const link=c.shopId?`<a href="#store" class="shop-link mag">مشاهده در فروشگاه ←</a>`:'';el.innerHTML=`<div class="lv">${c.level}</div><h3>${c.t}</h3><p>${c.d}</p>${priceHtml}${link}`;if(c.shopId)el.querySelector('.shop-link').addEventListener('click',()=>document.getElementById('store').scrollIntoView({behavior:'smooth'}));w.appendChild(el);io.observe(el);});}

@@ -10,7 +10,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
 #bg{position:fixed;inset:0;z-index:-3;display:block}
-.cursor-glow{position:fixed;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,255,.16),transparent 65%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);mix-blend-mode:screen}
+.cursor-glow{position:fixed;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,255,.22),transparent 60%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);mix-blend-mode:screen}
 .scroll-progress{position:fixed;top:0;right:0;height:3px;width:0;background:linear-gradient(90deg,var(--v1),var(--v2));z-index:99}
 
 /* NAV */
@@ -43,13 +43,14 @@ a{color:inherit;text-decoration:none}
 .hero-metrics div{display:flex;flex-direction:column}
 .hero-metrics b{font-size:clamp(26px,4vw,36px);font-weight:900;background:linear-gradient(120deg,var(--v3),var(--v1));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-metrics span{color:#c2c8e0;font-size:13px}
-.hero-orb{position:absolute;top:8%;left:52%;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,var(--v1),transparent 70%);filter:blur(60px);z-index:1;animation:spin 22s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* mouse-following glow already in .cursor-glow — enhance starfield instead */
+
 /* HERO SHOWCASE (real portfolio carousel) */
-.hero-showcase{position:relative;border-radius:26px;overflow:hidden;min-height:380px;background:rgba(20,18,55,.35);backdrop-filter:blur(40px) saturate(140%);-webkit-backdrop-filter:blur(40px) saturate(140%);border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 80px rgba(124,92,255,.35),inset 0 1px 0 rgba(255,255,255,.15)}
+.hero-showcase{position:relative;width:92%;margin:0 auto;border-radius:26px;overflow:hidden;min-height:340px;background:rgba(20,18,55,.35);backdrop-filter:blur(40px) saturate(140%);-webkit-backdrop-filter:blur(40px) saturate(140%);border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 80px rgba(124,92,255,.35),inset 0 1px 0 rgba(255,255,255,.15)}
 .hc-track{display:flex;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.hc-slide{flex:0 0 100%;padding:30px;display:flex;flex-direction:column;gap:16px}
+.hc-slide{flex:0 0 100%;padding:26px 26px 64px;display:flex;flex-direction:column;gap:14px}
 .hc-slide .mock{width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
 .hc-slide h3{font-size:22px;background:linear-gradient(120deg,var(--v3),var(--v2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hc-slide .cat{color:var(--v2);font-size:13px;font-weight:700}
@@ -63,10 +64,10 @@ a{color:inherit;text-decoration:none}
 .hc-dots span.active{background:linear-gradient(120deg,var(--v3),var(--v1));width:24px;border-radius:5px}
 
 /* SECTIONS */
-.section{padding:110px 0}
+.section{padding:85px 0}
 .section-alt{background:rgba(255,255,255,.02)}
 .section-head{text-align:center;max-width:680px;margin:0 auto 56px}
-.kicker{display:inline-block;color:var(--v2);font-size:13px;font-weight:700;margin-bottom:10px}
+.kicker{display:inline-block;font-size:15px;font-weight:800;margin-bottom:12px;padding:6px 16px;border-radius:999px;background:linear-gradient(120deg,rgba(124,92,255,.18),rgba(255,77,141,.18));border:1px solid rgba(124,92,255,.35);color:#c9b8ff;letter-spacing:.3px}
 .section-head h2{font-size:clamp(28px,4vw,42px);font-weight:900;margin-bottom:12px}
 .section-head p{color:var(--muted);font-size:16px}
 
