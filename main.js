@@ -46,7 +46,8 @@ async function buildHeroCarousel(){
 }
 function goSlide(i){hcIndex=(i+hcItems.length)%hcItems.length;updateHero();}
 function updateHero(){
-  document.getElementById('hcTrack').style.transform='translateX('+(-hcIndex*100)+'%)';
+  const track=document.getElementById('hcTrack'); if(!track)return;
+  track.style.transform='translateX('+(-hcIndex*100)+'%)';
   document.querySelectorAll('#hcDots span').forEach((d,i)=>d.classList.toggle('active',i===hcIndex));
 }
 if(document.getElementById('hcTrack'))buildHeroCarousel();
