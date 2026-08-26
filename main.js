@@ -10,7 +10,7 @@ const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
 let W,H,nodes,mx=-999,my=-999;
 function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;const n=Math.min(130,Math.floor(W*H/14000));nodes=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.8+0.6}));}
 resize();addEventListener('resize',resize);
-addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;const g=document.querySelector('.cursor-glow');g.style.left=mx+'px';g.style.top=my+'px';});
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;const g=document.querySelector('.cursor-glow');if(g){g.style.left=mx+'px';g.style.top=my+'px';}});
 function loop(){
   if(!ctx)return;
   ctx.clearRect(0,0,W,H);

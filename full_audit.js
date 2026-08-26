@@ -15,7 +15,7 @@ const fs = require('fs');
   const consoleErrors = [];
   page.on('console', m => { if (m.type()==='error') consoleErrors.push(m.text()); });
   page.on('pageerror', e => consoleErrors.push('PAGEERR: '+e.message));
-  await page.goto('https://mailin-sharin.github.io/artintech/?v=39', { waitUntil: 'networkidle' });
+  await page.goto('https://mailin-sharin.github.io/artintech/?v=40', { waitUntil: 'networkidle' });
   await page.waitForTimeout(2500);
 
   // ===== 3. RENDER CHECK (all sections populated) =====
@@ -62,11 +62,16 @@ const fs = require('fs');
 
   // 4c. carousel next
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.waitForTimeout(300);
-  const beforeIdx = await page.evaluate(() => [...document.querySelectorAll('#hcDots span')].findIndex(s=>s.classList.contains('active')));
-  await page.click('#hcNext'); await page.waitForTimeout(700);
-  const afterIdx = await page.evaluate(() => [...document.querySelectorAll('#hcDots span')].findIndex(s=>s.classList.contains('active')));
-  log(beforeIdx!==afterIdx && afterIdx>=0?'pass':'fail', `carousel navigates: ${beforeIdx} -> ${afterIdx}`);
+  await page.waitForTimeout(500);
+  const hasNext = await page.evaluate(() => !!document.getElementById('hcNext'));
+  if (hasNext) {
+    const beforeIdx = await page.evaluate(() => [...document.querySelectorAll('#hcDots span')].findIndex(s=>s.classList.contains('active')));
+    await page.click('#hcNext'); await page.waitForTimeout(700);
+    const afterIdx = await page.evaluate(() => [...document.querySelectorAll('#hcDots span')].findIndex(s=>s.classList.contains('active')));
+    log(beforeIdx!==afterIdx && afterIdx>=0?'pass':'fail', `carousel navigates: ${beforeIdx} -> ${afterIdx}`);
+  } else {
+    log('fail', 'carousel next button missing');
+  }
 
   // ===== 5. RESPONSIVE OVERFLOW (multiple sizes) =====
   const sizes = [{n:'iPhone12',w:390},{n:'360',w:360},{n:'320',w:320},{n:'768',w:768},{n:'1024',w:1024}];
