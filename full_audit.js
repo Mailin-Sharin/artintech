@@ -15,7 +15,7 @@ const fs = require('fs');
   const consoleErrors = [];
   page.on('console', m => { if (m.type()==='error') consoleErrors.push(m.text()); });
   page.on('pageerror', e => consoleErrors.push('PAGEERR: '+e.message));
-  await page.goto('https://mailin-sharin.github.io/artintech/?v=41', { waitUntil: 'networkidle' });
+  await page.goto('https://mailin-sharin.github.io/artintech/?v=42', { waitUntil: 'networkidle' });
   await page.waitForTimeout(2500);
 
   // ===== 3. RENDER CHECK (all sections populated) =====

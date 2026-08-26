@@ -17,10 +17,9 @@
     "320 (320px) overflow: CLEAN",
     "768 (768px) overflow: CLEAN",
     "1024 (1024px) overflow: CLEAN",
-    "empty interactive elements: 0"
+    "empty interactive elements: 0",
+    "console errors: none"
   ],
-  "fail": [
-    "console errors: PAGEERR: Cannot read properties of null (reading 'style') | PAGEERR: Cannot read properties of null (reading 'style') | PAGEERR: Cannot read properties of null (reading 'style')"
-  ],
+  "fail": [],
   "warnings": []
 }
