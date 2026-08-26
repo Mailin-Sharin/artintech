@@ -75,7 +75,7 @@ navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu))
 
 /* ---- scroll + reveal + counters ---- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
-addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('scrollProgress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
+addEventListener('scroll',()=>{const h=document.documentElement;const bar=document.getElementById('scrollProgress')||document.querySelector('.scroll-progress');if(bar)bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});
 
 const ICONS={web:"وب",python:"PY",video:"وی",translate:"تر",automation:"ات",seo:"سئو",ai:"گر",content:"مت",chatbot:"بات",data:"داده",selfdev:"خود",training:"آم"};
 async function renderServices(){const s=await loadJSON('settings.json');if(!s)return;const w=document.getElementById('servicesGrid');s.services.forEach(sv=>{const el=document.createElement('article');el.className='service reveal';const ic=sv.ic||'★';el.innerHTML=`<div class="ic">${ic}</div><h3>${sv.t}</h3><p>${sv.d}</p><div class="more">مشاهده نمونه‌کار ←</div>`;bindTilt(el);el.addEventListener('click',()=>openModal(sv));w.appendChild(el);io.observe(el);});}
