@@ -73,6 +73,24 @@ menuBtn.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');
 navClose.addEventListener('click',closeMenu);navBackdrop.addEventListener('click',closeMenu);
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 
+/* ---- scroll spy: highlight active nav link ---- */
+const navAnchors=[...document.querySelectorAll('.nav-links a[href^="#"]')];
+const spy=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const id='#'+e.target.id;
+      navAnchors.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+['home','services','work','store','training','steps','about','contact'].forEach(id=>{const el=document.getElementById(id);if(el)spy.observe(el);});
+
+/* ---- nav link magnetic hover ---- */
+navAnchors.forEach(a=>{
+  a.addEventListener('mousemove',e=>{const r=a.getBoundingClientRect();a.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.3}px,${(e.clientY-r.top-r.height/2)*.4}px)`;});
+  a.addEventListener('mouseleave',()=>{a.style.transform='';});
+});
+
 /* ---- scroll + reveal + counters ---- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 addEventListener('scroll',()=>{const h=document.documentElement;const bar=document.getElementById('scrollProgress')||document.querySelector('.scroll-progress');if(bar)bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';});

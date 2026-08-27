@@ -15,13 +15,18 @@ a{color:inherit;text-decoration:none}
 
 /* NAV */
 .nav{position:fixed;top:14px;inset-inline:0;z-index:60;display:flex;justify-content:center;pointer-events:none}
-.nav-inner{pointer-events:auto;display:flex;align-items:center;gap:16px;width:min(960px,94vw);padding:10px 14px;border-radius:999px;background:rgba(13,13,28,.5);backdrop-filter:blur(20px);border:1px solid var(--border);box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.nav-inner{position:relative;pointer-events:auto;display:flex;align-items:center;gap:16px;width:min(960px,94vw);padding:10px 14px;border-radius:999px;background:rgba(13,13,28,.5);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);border:1px solid var(--border);box-shadow:0 10px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden}
+.nav-inner::before{content:"";position:absolute;inset:-50%;background:conic-gradient(from 0deg,transparent 0%,rgba(124,92,255,.18) 20%,transparent 35%,rgba(255,77,141,.16) 55%,transparent 70%,rgba(34,211,238,.14) 85%,transparent 100%);animation:navspin 14s linear infinite;z-index:0;pointer-events:none}
+@keyframes navspin{to{transform:rotate(360deg)}}
+.nav-inner>*{position:relative;z-index:1}
 .logo{font-size:22px;font-weight:900;white-space:nowrap}
 .logo span{color:var(--v1)}
 .nav-links{display:flex;gap:4px;align-items:center;margin-inline-start:auto}
-.nav-links a{color:var(--muted);font-size:14px;padding:8px 14px;border-radius:999px;transition:color .25s,background .25s}
-.nav-links a:hover{color:var(--text);background:var(--surface2)}
-.btn-nav{background:linear-gradient(120deg,var(--v3),var(--v1));color:#fff;font-weight:800;padding:9px 18px;border-radius:999px;font-size:13px;white-space:nowrap}
+.nav-links a{position:relative;color:var(--muted);font-size:14px;padding:8px 14px;border-radius:999px;transition:color .25s,background .25s}
+.nav-links a:hover{color:var(--text);background:rgba(124,92,255,.14)}
+.nav-links a.active{color:#fff;background:rgba(124,92,255,.2)}
+.btn-nav{background:linear-gradient(120deg,var(--v3),var(--v1));color:#fff;font-weight:800;padding:9px 18px;border-radius:999px;font-size:13px;white-space:nowrap;transition:transform .25s,box-shadow .25s}
+.btn-nav:hover{transform:scale(1.05);box-shadow:0 8px 24px rgba(255,77,141,.45)}
 .nav-close{display:none;position:absolute;top:14px;inset-inline-start:14px;background:var(--surface2);border:1px solid var(--border);color:var(--text);width:40px;height:40px;border-radius:50%;cursor:pointer;z-index:66}
 .menu-btn{display:none;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-size:20px;width:44px;height:44px;border-radius:50%;cursor:pointer}
 
@@ -48,20 +53,23 @@ a{color:inherit;text-decoration:none}
 /* mouse-following glow already in .cursor-glow — enhance starfield instead */
 
 /* HERO SHOWCASE (real portfolio carousel) */
-.hero-showcase{position:relative;width:92%;margin:0 auto;border-radius:26px;overflow:hidden;min-height:340px;background:rgba(20,18,55,.35);backdrop-filter:blur(40px) saturate(140%);-webkit-backdrop-filter:blur(40px) saturate(140%);border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 80px rgba(124,92,255,.35),inset 0 1px 0 rgba(255,255,255,.15)}
+.hero-showcase{position:relative;width:82%;margin:0 auto;animation:floaty 6s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-showcase::after{content:"";position:absolute;inset:-30px;border-radius:40px;background:radial-gradient(circle at 50% 50%,rgba(124,92,255,.25),transparent 70%);filter:blur(40px);z-index:-1}
+.hero-showcase{position:relative;width:82%;margin:0 auto;border-radius:24px;overflow:hidden;min-height:300px;background:rgba(20,18,55,.4);backdrop-filter:blur(40px) saturate(140%);-webkit-backdrop-filter:blur(40px) saturate(140%);border:1px solid rgba(255,255,255,.2);box-shadow:0 30px 80px rgba(124,92,255,.3),inset 0 1px 0 rgba(255,255,255,.15)}
 .hc-track{display:flex;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.hc-slide{flex:0 0 100%;padding:26px 26px 64px;display:flex;flex-direction:column;gap:14px}
-.hc-slide .mock{width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
-.hc-slide h3{font-size:22px;background:linear-gradient(120deg,var(--v3),var(--v2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hc-slide .cat{color:var(--v2);font-size:13px;font-weight:700}
-.hc-slide p{color:#d6dbf0;font-size:14px;line-height:1.7}
-.hc-slide .price{color:#eef0fb;font-weight:800;font-size:17px}
-.hc-nav{position:absolute;bottom:16px;inset-inline:16px;display:flex;align-items:center;justify-content:space-between}
-.hc-prev,.hc-next{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:var(--text);font-size:22px;cursor:pointer;transition:.25s}
-.hc-prev:hover,.hc-next:hover{background:linear-gradient(120deg,var(--v3),var(--v1));border-color:transparent}
+.hc-slide{flex:0 0 100%;padding:30px 30px 70px;display:flex;flex-direction:column;gap:16px}
+.hc-slide .mock{width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.hc-slide h3{font-size:24px;background:linear-gradient(120deg,var(--v3),var(--v2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:6px}
+.hc-slide .cat{color:var(--v2);font-size:14px;font-weight:700}
+.hc-slide p{color:#e6e9f7;font-size:15px;line-height:1.8}
+.hc-slide .price{color:#fff;font-weight:800;font-size:18px}
+.hc-nav{position:absolute;bottom:18px;inset-inline:18px;display:flex;align-items:center;justify-content:space-between;z-index:3}
+.hc-prev,.hc-next{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:var(--text);font-size:22px;cursor:pointer;transition:.25s;backdrop-filter:blur(8px)}
+.hc-prev:hover,.hc-next:hover{background:linear-gradient(120deg,var(--v3),var(--v1));border-color:transparent;transform:scale(1.1)}
 .hc-dots{display:flex;gap:8px}
-.hc-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:.25s}
-.hc-dots span.active{background:linear-gradient(120deg,var(--v3),var(--v1));width:24px;border-radius:5px}
+.hc-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.25s}
+.hc-dots span.active{background:linear-gradient(120deg,var(--v3),var(--v1));width:26px;border-radius:5px}
 
 /* SECTIONS */
 .section{padding:85px 0}
