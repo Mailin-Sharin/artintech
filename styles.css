@@ -196,12 +196,26 @@ a{color:inherit;text-decoration:none}
   .nav-links{position:fixed;top:0;right:0;height:100vh;width:80vw;max-width:320px;background:rgba(10,10,20,.96);backdrop-filter:blur(24px);flex-direction:column;padding:90px 24px;gap:10px;right:-100%;transition:right .35s;z-index:65;border-left:1px solid var(--border)}
   .nav-links.open{right:0}
   .nav-links a{padding:14px;font-size:17px;width:100%;border-radius:12px}
-  .services,.steps,.training,.store{grid-template-columns:1fr}
+  .section{padding:54px 0}
+  .services{grid-template-columns:repeat(2,1fr);gap:12px}
+  .service{padding:18px;min-height:0;gap:10px}
+  .service .ic{width:42px;height:42px;font-size:14px}
+  .service h3{font-size:15px;line-height:1.4}
+  .service p{display:none}
+  .service .more{display:none}
+  .steps,.training,.store{grid-template-columns:1fr;gap:14px}
   .about{grid-template-columns:1fr}
+  .modal-card{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr;padding:84px 0 32px;min-height:auto;gap:26px}
+  .hero-pitch h1{font-size:clamp(28px,8vw,38px)}
+  .lead{font-size:15px;margin-bottom:18px}
+  .hero-actions{margin-bottom:24px}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .hero-showcase{width:100%;min-height:auto}
+  .hc-slide{padding:22px 20px 60px;gap:12px}
+  .hc-slide h3{font-size:20px}
+  .hc-slide p{font-size:14px}
   .hero-metrics{gap:14px;flex-wrap:wrap;justify-content:center}
   .hero-metrics b{font-size:clamp(22px,7vw,32px)}
-  .hero-actions{flex-wrap:wrap}
-  .hero-actions .btn{width:100%;justify-content:center}
-  .hw-mini{grid-template-columns:1fr 1fr}
 }
