@@ -68,8 +68,9 @@ document.getElementById('modalCta').addEventListener('click',closeModal);
 
 /* ---- mobile menu ---- */
 const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks'),navClose=document.getElementById('navClose'),navBackdrop=document.getElementById('navBackdrop');
-function closeMenu(){navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}
-menuBtn.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o?'true':'false');});
+function openMenu(){navLinks.classList.add('open');navBackdrop.classList.add('open');menuBtn.setAttribute('aria-expanded','true');}
+function closeMenu(){navLinks.classList.remove('open');navBackdrop.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}
+menuBtn.addEventListener('click',()=>{navLinks.classList.contains('open')?closeMenu():openMenu();});
 navClose.addEventListener('click',closeMenu);navBackdrop.addEventListener('click',closeMenu);
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 
